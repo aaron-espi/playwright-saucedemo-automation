@@ -1,41 +1,35 @@
 import { expect, Locator, Page } from '@playwright/test';
-import { InventorySelectors } from '../constants/selectors/InventorySelectors';
+import { InventoryLocators } from '../constants/locators/InventoryLocators';
 
 export class InventoryPage {
   page: Page;
-  readonly inventoryItem: Locator;
-  readonly inventoryContainer: Locator;
-  readonly title: Locator;
-  readonly openSideMenuButton: Locator;
 
   readonly addToCartButtonString: string = 'Add to cart';
 
   constructor(page: Page) {
     this.page = page;
-    this.inventoryItem = page.locator(InventorySelectors.inventoryItem);
-    this.inventoryContainer = page.locator(InventorySelectors.inventoryContainer);
-    this.title = page.locator(InventorySelectors.title);
-    this.openSideMenuButton = page.getByRole(InventorySelectors.openSideMenuButton.role, {
-      name: InventorySelectors.openSideMenuButton.name,
-    });
   }
 
   async verifyHomePageLoaded() {
-    await expect(this.inventoryContainer).toBeVisible();
-    await expect(this.title).toBeVisible();
-    await expect(this.openSideMenuButton).toBeVisible();
+    await expect(this.page.locator(InventoryLocators.inventoryContainer)).toBeVisible();
+    await expect(this.page.locator(InventoryLocators.title)).toBeVisible();
+    await expect(
+      this.page.getByRole(InventoryLocators.openSideMenuButton.role, {
+        name: InventoryLocators.openSideMenuButton.name,
+      })
+    ).toBeVisible();
   }
 
   async verifyProductsDetailsOnListingPage() {
-    await this.verifyEachProductDetails(InventorySelectors.itemName, true);
-    await this.verifyEachProductDetails(InventorySelectors.itemPrice, true);
-    await this.verifyEachProductDetails(InventorySelectors.itemDescription, true);
-    await this.verifyEachProductDetails(InventorySelectors.itemImage);
+    await this.verifyEachProductDetails(InventoryLocators.itemName, true);
+    await this.verifyEachProductDetails(InventoryLocators.itemPrice, true);
+    await this.verifyEachProductDetails(InventoryLocators.itemDescription, true);
+    await this.verifyEachProductDetails(InventoryLocators.itemImage);
     await this.verifyAddToCartButtons();
   }
 
   async verifyEachProductDetails(selector: string, isTextCheck: boolean = false) {
-    const products = await this.page.locator(InventorySelectors.inventoryItem).all();
+    const products = await this.page.locator(InventoryLocators.inventoryItem).all();
 
     for (const product of products) {
       const element = product.locator(selector);
@@ -47,11 +41,11 @@ export class InventoryPage {
   }
 
   async verifyAddToCartButtons() {
-    const products = await this.page.locator(InventorySelectors.inventoryItem).all();
+    const products = await this.page.locator(InventoryLocators.inventoryItem).all();
 
     for (const product of products) {
-      const itemAddToCartButton = product.getByRole(InventorySelectors.itemAddToCartButton.role, {
-        name: InventorySelectors.itemAddToCartButton.name,
+      const itemAddToCartButton = product.getByRole(InventoryLocators.itemAddToCartButton.role, {
+        name: InventoryLocators.itemAddToCartButton.name,
       });
       await expect(itemAddToCartButton).toBeVisible();
       await expect(itemAddToCartButton).toBeEnabled();
@@ -60,33 +54,33 @@ export class InventoryPage {
   }
 
   async getProductPrices() {
-    const products = await this.page.locator(InventorySelectors.inventoryItem).all();
+    const products = await this.page.locator(InventoryLocators.inventoryItem).all();
 
     return Promise.all(
       products.map(async (product) => {
-        const priceText = await product.locator(InventorySelectors.itemPrice).innerText();
+        const priceText = await product.locator(InventoryLocators.itemPrice).innerText();
         return parseFloat(priceText.replace('$', ''));
       })
     );
   }
 
   async getProduct(index: number) {
-    return this.page.locator(InventorySelectors.inventoryItem).nth(index);
+    return this.page.locator(InventoryLocators.inventoryItem).nth(index);
   }
 
   async getProductDetails(product: Locator) {
-    const itemName = await product.locator(InventorySelectors.itemName).textContent();
-    const itemDescription = await product.locator(InventorySelectors.itemDescription).textContent();
-    const itemPrice = await product.locator(InventorySelectors.itemPrice).textContent();
+    const itemName = await product.locator(InventoryLocators.itemName).textContent();
+    const itemDescription = await product.locator(InventoryLocators.itemDescription).textContent();
+    const itemPrice = await product.locator(InventoryLocators.itemPrice).textContent();
     return { itemName, itemDescription, itemPrice };
   }
 
   async clickOnProduct(product: Locator) {
-    await product.locator(InventorySelectors.itemName).click();
+    await product.locator(InventoryLocators.itemName).click();
   }
 
   async selectSortOption(option: string) {
-    await this.page.locator(InventorySelectors.sortContainer).selectOption(option);
+    await this.page.locator(InventoryLocators.sortContainer).selectOption(option);
   }
 
   async verifyPricesSorted(order: 'asc' | 'desc') {
@@ -96,11 +90,11 @@ export class InventoryPage {
   }
 
   async verifyProductsSortedByName(order: 'asc' | 'desc') {
-    const products = await this.page.locator(InventorySelectors.inventoryItem).all();
+    const products = await this.page.locator(InventoryLocators.inventoryItem).all();
 
     const productNames = await Promise.all(
       products.map(
-        async (product) => (await product.locator(InventorySelectors.itemName).textContent())?.toLowerCase() || ''
+        async (product) => (await product.locator(InventoryLocators.itemName).textContent())?.toLowerCase() || ''
       )
     );
 
@@ -111,17 +105,17 @@ export class InventoryPage {
 
   async toggleSideMenu(action: 'open' | 'close') {
     const buttonName =
-      action === 'open' ? InventorySelectors.openSideMenuButton.name : InventorySelectors.closeSideMenuButton.name;
+      action === 'open' ? InventoryLocators.openSideMenuButton.name : InventoryLocators.closeSideMenuButton.name;
     await this.page.getByRole('button', { name: buttonName }).click();
   }
 
   async getSideMenuElements() {
-    const sideMenu = this.page.locator(InventorySelectors.sideMenu);
-    const closeButton = this.page.getByRole(InventorySelectors.closeSideMenuButton.role, {
-      name: InventorySelectors.closeSideMenuButton.name,
+    const sideMenu = this.page.locator(InventoryLocators.sideMenu);
+    const closeButton = this.page.getByRole(InventoryLocators.closeSideMenuButton.role, {
+      name: InventoryLocators.closeSideMenuButton.name,
     });
-    const openButton = this.page.getByRole(InventorySelectors.openSideMenuButton.role, {
-      name: InventorySelectors.openSideMenuButton.name,
+    const openButton = this.page.getByRole(InventoryLocators.openSideMenuButton.role, {
+      name: InventoryLocators.openSideMenuButton.name,
     });
 
     return { sideMenu, closeButton, openButton };

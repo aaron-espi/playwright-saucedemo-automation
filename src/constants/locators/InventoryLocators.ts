@@ -1,6 +1,6 @@
 import { Role } from '../enum/Roles';
 
-export class InventorySelectors {
+export class InventoryLocators {
   static readonly title = '[data-test="title"]';
   static readonly inventoryContainer = '[data-test="inventory-container"]';
   static readonly inventoryItem = '[data-test="inventory-item"]';

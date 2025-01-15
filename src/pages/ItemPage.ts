@@ -1,22 +1,22 @@
 import { expect, Locator, Page } from '@playwright/test';
-import { ItemSelectors } from '../constants/selectors/ItemSelectors';
+import { ItemLocators } from '../constants/locators/ItemLocators';
 
 export class ItemPage {
-  page: Page;
+  readonly page: Page;
 
   constructor(page: Page) {
     this.page = page;
   }
 
   async getProductDetails(product: Locator) {
-    const itemName = await product.locator(ItemSelectors.itemName).textContent();
-    const itemDescription = await product.locator(ItemSelectors.itemDescription).textContent();
-    const itemPrice = await product.locator(ItemSelectors.itemPrice).textContent();
+    const itemName = await product.locator(ItemLocators.itemName).textContent();
+    const itemDescription = await product.locator(ItemLocators.itemDescription).textContent();
+    const itemPrice = await product.locator(ItemLocators.itemPrice).textContent();
     return { itemName, itemDescription, itemPrice };
   }
 
   async verifyProductPageIsOpened() {
-    await expect(this.page.locator(ItemSelectors.itemDetailsContainer)).toBeVisible();
+    await expect(this.page.locator(ItemLocators.itemDetailsContainer)).toBeVisible();
   }
 
   async verifyProductDetailsAreConsistent(product: Locator, beforeDetails) {

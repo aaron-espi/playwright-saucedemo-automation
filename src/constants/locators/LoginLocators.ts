@@ -1,4 +1,4 @@
-export class LoginSelectors {
+export class LoginLocators {
   static readonly usernameInput = '[data-test="username"]';
   static readonly passwordInput = '[data-test="password"]';
   static readonly loginButton = '[data-test="login-button"]';
