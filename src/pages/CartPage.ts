@@ -26,7 +26,7 @@ export class CartPage {
     await expect(count).toBeGreaterThan(0);
   }
 
-  async verifyCartContainsExpectedNumberOfItems(itemCount: number) {
+  async verifyCartContainsExpectedNumberOfProducts(itemCount: number) {
     const items = this.page.locator(CartLocators.inventoryItem);
     const count = await items.count();
     await expect(count).toBe(itemCount);

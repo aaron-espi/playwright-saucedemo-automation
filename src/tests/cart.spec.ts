@@ -22,14 +22,14 @@ test('should display an empty shopping cart if no products have been added previ
   await cartPage.verifyCartIsEmpty();
 });
 
-test('should display the item in the shopping cart after adding it', async ({ page }) => {
+test('should display the product in the shopping cart after adding it', async ({ page }) => {
   const inventoryPage = new InventoryPage(page);
   const cartPage = new CartPage(page);
   const product = await inventoryPage.getProduct(0);
   const detailsBefore = await inventoryPage.getProductDetails(product);
   await inventoryPage.addProductToCart(0);
   await inventoryPage.clickOnCart();
-  await cartPage.verifyCartContainsExpectedNumberOfItems(1);
+  await cartPage.verifyCartContainsExpectedNumberOfProducts(1);
   await cartPage.verifyProductDetailsMatch(detailsBefore);
 });
 
@@ -58,7 +58,7 @@ test('should display multiple products in the shopping cart after adding them', 
   await inventoryPage.addProductToCart(0);
   await inventoryPage.addProductToCart(1);
   await inventoryPage.clickOnCart();
-  await cartPage.verifyCartContainsExpectedNumberOfItems(2);
+  await cartPage.verifyCartContainsExpectedNumberOfProducts(2);
 });
 
 test('should remove the selected product without affecting others in the cart', async ({ page }) => {
@@ -70,6 +70,6 @@ test('should remove the selected product without affecting others in the cart', 
   await inventoryPage.addProductToCart(1);
   await inventoryPage.clickOnCart();
   await cartPage.removeProductFromCart(0);
-  await cartPage.verifyCartContainsExpectedNumberOfItems(1);
+  await cartPage.verifyCartContainsExpectedNumberOfProducts(1);
   await cartPage.verifyProductDetailsMatch(detailsBefore);
 });

@@ -32,10 +32,10 @@ export class InventoryPage {
   }
 
   async verifyEachProductDetails(selector: string, isTextCheck: boolean = false) {
-    const products = await this.page.locator(InventoryLocators.inventoryItem).all();
+    const items = await this.page.locator(InventoryLocators.inventoryItem).all();
 
-    for (const product of products) {
-      const element = product.locator(selector);
+    for (const item of items) {
+      const element = item.locator(selector);
       await expect(element).toBeVisible();
       if (isTextCheck) {
         await expect(element).not.toBeEmpty();
@@ -44,10 +44,10 @@ export class InventoryPage {
   }
 
   async verifyAddToCartButtons() {
-    const products = await this.page.locator(InventoryLocators.inventoryItem).all();
+    const items = await this.page.locator(InventoryLocators.inventoryItem).all();
 
-    for (const product of products) {
-      const itemAddToCartButton = product.getByRole(InventoryLocators.itemAddToCartButton.role, {
+    for (const item of items) {
+      const itemAddToCartButton = item.getByRole(InventoryLocators.itemAddToCartButton.role, {
         name: InventoryLocators.itemAddToCartButton.name,
       });
       await expect(itemAddToCartButton).toBeVisible();
@@ -57,11 +57,11 @@ export class InventoryPage {
   }
 
   async getProductPrices() {
-    const products = await this.page.locator(InventoryLocators.inventoryItem).all();
+    const items = await this.page.locator(InventoryLocators.inventoryItem).all();
 
     return Promise.all(
-      products.map(async (product) => {
-        const priceText = await product.locator(InventoryLocators.itemPrice).innerText();
+      items.map(async (item) => {
+        const priceText = await item.locator(InventoryLocators.itemPrice).innerText();
         return parseFloat(priceText.replace('$', ''));
       })
     );
@@ -71,15 +71,15 @@ export class InventoryPage {
     return this.page.locator(InventoryLocators.inventoryItem).nth(index);
   }
 
-  async getProductDetails(product: Locator) {
-    const itemName = await product.locator(InventoryLocators.itemName).textContent();
-    const itemDescription = await product.locator(InventoryLocators.itemDescription).textContent();
-    const itemPrice = await product.locator(InventoryLocators.itemPrice).textContent();
+  async getProductDetails(item: Locator) {
+    const itemName = await item.locator(InventoryLocators.itemName).textContent();
+    const itemDescription = await item.locator(InventoryLocators.itemDescription).textContent();
+    const itemPrice = await item.locator(InventoryLocators.itemPrice).textContent();
     return { itemName, itemDescription, itemPrice };
   }
 
-  async clickOnProduct(product: Locator) {
-    await product.locator(InventoryLocators.itemName).click();
+  async clickOnProduct(item: Locator) {
+    await item.locator(InventoryLocators.itemName).click();
   }
 
   async selectSortOption(criteria: SortCriteria) {
@@ -93,19 +93,19 @@ export class InventoryPage {
   }
 
   async verifyProductsSortedByName(order: SortOrder) {
-    const products = await this.page.locator(InventoryLocators.inventoryItem).all();
+    const items = await this.page.locator(InventoryLocators.inventoryItem).all();
 
-    const productNames = await Promise.all(
-      products.map(
-        async (product) => (await product.locator(InventoryLocators.itemName).textContent())?.toLowerCase() || ''
+    const itemNames = await Promise.all(
+      items.map(
+        async (item) => (await item.locator(InventoryLocators.itemName).textContent())?.toLowerCase() || ''
       )
     );
 
-    const sortedNames = [...productNames].sort((a, b) =>
+    const sortedNames = [...itemNames].sort((a, b) =>
       order === SortOrder.Ascending ? a.localeCompare(b) : b.localeCompare(a)
     );
 
-    expect(productNames).toEqual(sortedNames);
+    expect(itemNames).toEqual(sortedNames);
   }
 
   async toggleSideMenu(action: SideMenuAction) {
@@ -150,8 +150,8 @@ export class InventoryPage {
   }
 
   async addProductToCart(index: number) {
-    const product = await this.getProduct(index);
-    await product
+    const item = await this.getProduct(index);
+    await item
       .getByRole(InventoryLocators.itemAddToCartButton.role, { name: InventoryLocators.itemAddToCartButton.name })
       .click();
   }
