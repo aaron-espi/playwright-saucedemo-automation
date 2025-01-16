@@ -152,4 +152,8 @@ export class InventoryPage {
   async clickOnAbout() {
     await this.page.getByRole(InventoryLocators.aboutButton.role, { name: InventoryLocators.aboutButton.name }).click();
   }
+
+  async clickOnShoppingCart() {
+    await this.page.locator(InventoryLocators.shoppingCartButton).click();
+  }
 }
