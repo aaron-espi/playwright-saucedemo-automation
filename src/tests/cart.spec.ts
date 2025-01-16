@@ -29,19 +29,47 @@ test('should display the item in the shopping cart after adding it', async ({ pa
   const detailsBefore = await inventoryPage.getProductDetails(product);
   await inventoryPage.addProductToCart(0);
   await inventoryPage.clickOnCart();
-  await cartPage.verifyProductDetailsInCartAreConsistent(detailsBefore);
+  await cartPage.verifyCartContainsExpectedNumberOfItems(1);
+  await cartPage.verifyProductDetailsMatch(detailsBefore);
 });
 
-test('should remove the product from the shopping cart after deleting it', async ({ page }) => {
+test('should empty the shopping cart after removing the product', async ({ page }) => {
   const inventoryPage = new InventoryPage(page);
   const cartPage = new CartPage(page);
-  const product = await inventoryPage.getProduct(0);
-  const detailsBefore = await inventoryPage.getProductDetails(product);
   await inventoryPage.addProductToCart(0);
   await inventoryPage.clickOnCart();
-  await cartPage.verifyProductDetailsInCartAreConsistent(detailsBefore);
-  await cartPage.removeProductFromCart();
+  await cartPage.removeProductFromCart(0);
   await cartPage.verifyCartIsEmpty();
 });
 
-// comprobar que al añadir, salir, volver a entrar, se queda el item
+test('should persist product in shopping cart after navigation', async ({ page }) => {
+  const inventoryPage = new InventoryPage(page);
+  const cartPage = new CartPage(page);
+  await inventoryPage.addProductToCart(0);
+  await inventoryPage.clickOnCart();
+  await cartPage.goBackToInventory();
+  await inventoryPage.clickOnCart();
+  await cartPage.verifyCartIsNotEmpty();
+});
+
+test('should display multiple products in the shopping cart after adding them', async ({ page }) => {
+  const inventoryPage = new InventoryPage(page);
+  const cartPage = new CartPage(page);
+  await inventoryPage.addProductToCart(0);
+  await inventoryPage.addProductToCart(1);
+  await inventoryPage.clickOnCart();
+  await cartPage.verifyCartContainsExpectedNumberOfItems(2);
+});
+
+test('should remove the selected product without affecting others in the cart', async ({ page }) => {
+  const inventoryPage = new InventoryPage(page);
+  const cartPage = new CartPage(page);
+  const product = await inventoryPage.getProduct(1);
+  const detailsBefore = await inventoryPage.getProductDetails(product);
+  await inventoryPage.addProductToCart(0);
+  await inventoryPage.addProductToCart(1);
+  await inventoryPage.clickOnCart();
+  await cartPage.removeProductFromCart(0);
+  await cartPage.verifyCartContainsExpectedNumberOfItems(1);
+  await cartPage.verifyProductDetailsMatch(detailsBefore);
+});

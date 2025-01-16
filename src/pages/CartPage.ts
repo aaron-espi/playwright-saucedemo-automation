@@ -20,18 +20,40 @@ export class CartPage {
     await expect(count).toBe(0);
   }
 
+  async verifyCartIsNotEmpty() {
+    const items = this.page.locator(CartLocators.inventoryItem);
+    const count = await items.count();
+    await expect(count).toBeGreaterThan(0);
+  }
+
+  async verifyCartContainsExpectedNumberOfItems(itemCount: number) {
+    const items = this.page.locator(CartLocators.inventoryItem);
+    const count = await items.count();
+    await expect(count).toBe(itemCount);
+  }
+
   async getProductInCart() {
-    const product = this.page.locator(CartLocators.inventoryItem);
-    const itemName = await product.locator(CartLocators.itemName).textContent();
-    const itemDescription = await product.locator(CartLocators.itemDescription).textContent();
-    const itemPrice = await product.locator(CartLocators.itemPrice).textContent();
+    const item = this.page.locator(CartLocators.inventoryItem);
+    const itemName = await item.locator(CartLocators.itemName).textContent();
+    const itemDescription = await item.locator(CartLocators.itemDescription).textContent();
+    const itemPrice = await item.locator(CartLocators.itemPrice).textContent();
     return { itemName, itemDescription, itemPrice };
   }
 
-  async verifyProductDetailsInCartAreConsistent(expectedDetails) {
-    const productDetailsInCart = await this.getProductInCart();
-    await expect(productDetailsInCart.itemName).toBe(expectedDetails.itemName);
-    await expect(productDetailsInCart.itemDescription).toBe(expectedDetails.itemDescription);
-    await expect(productDetailsInCart.itemPrice).toBe(expectedDetails.itemPrice);
+  async verifyProductDetailsMatch(expectedDetails) {
+    const itemDetailsInCart = await this.getProductInCart();
+    await expect(itemDetailsInCart.itemName).toBe(expectedDetails.itemName);
+    await expect(itemDetailsInCart.itemDescription).toBe(expectedDetails.itemDescription);
+    await expect(itemDetailsInCart.itemPrice).toBe(expectedDetails.itemPrice);
+  }
+
+  async removeProductFromCart(itemIndex: number) {
+    const items = this.page.locator(CartLocators.inventoryItem);
+    const item = items.nth(itemIndex);
+    await item.getByRole(CartLocators.removeItemButton.role, { name: CartLocators.removeItemButton.name }).click();
+  }
+
+  async goBackToInventory() {
+    await this.page.locator(CartLocators.continueShoppingButton).click();
   }
 }
