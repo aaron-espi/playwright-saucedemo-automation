@@ -6,7 +6,7 @@ export class InventoryLocators {
   static readonly inventoryItem = '[data-test="inventory-item"]';
   static readonly itemAddToCartButton = { role: Role.Button, name: 'Add to cart' };
   static readonly itemName = '[data-test="inventory-item-name"]';
-  static readonly itemPrice = '[data-test="inventory-item-name"]';
+  static readonly itemPrice = '[data-test="inventory-item-price"]';
   static readonly itemDescription = '[data-test="inventory-item-desc"]';
   static readonly itemImage = 'img.inventory_item_img';
   static readonly sortContainer = '[data-test="product-sort-container"]';

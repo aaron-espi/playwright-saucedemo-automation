@@ -22,7 +22,15 @@ test('should display an empty shopping cart if no products have been added previ
   await shoppingCartPage.verifyShoppingCartIsEmpty();
 });
 
-// comprobar que al añadir un objeto realmente se añade
+test('should display the item in the shopping cart after adding it', async ({ page }) => {
+  const inventoryPage = new InventoryPage(page);
+  const shoppingCartPage = new CartPage(page);
+  const product = await inventoryPage.getProduct(0);
+  const detailsBefore = await inventoryPage.getProductDetails(product);
+  await inventoryPage.addProductToCart(0);
+  await inventoryPage.clickOnShoppingCart();
+  await shoppingCartPage.verifyProductDetailsInCartAreConsistent(detailsBefore);
+});
 
 // comprobar que al añadir y quitarlo no se muestra
 

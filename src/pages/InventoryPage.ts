@@ -149,6 +149,13 @@ export class InventoryPage {
       .click();
   }
 
+  async addProductToCart(index: number) {
+    const product = await this.getProduct(index);
+    await product
+      .getByRole(InventoryLocators.itemAddToCartButton.role, { name: InventoryLocators.itemAddToCartButton.name })
+      .click();
+  }
+
   async clickOnAbout() {
     await this.page.getByRole(InventoryLocators.aboutButton.role, { name: InventoryLocators.aboutButton.name }).click();
   }
