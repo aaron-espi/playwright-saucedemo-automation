@@ -12,7 +12,6 @@ test('should display product price, title, description, image and add-to-cart bu
   page,
 }) => {
   const inventoryPage = new InventoryPage(page);
-
   await inventoryPage.verifyProductsDetailsOnListingPage();
 });
 
@@ -21,12 +20,9 @@ test('should navigate to the correct product page and display matching product d
 }) => {
   const itemPage = new ItemPage(page);
   const inventoryPage = new InventoryPage(page);
-
   const product = await inventoryPage.getProduct(0);
   const beforeDetails = await inventoryPage.getProductDetails(product);
-
   await inventoryPage.clickOnProduct(product);
-
   await itemPage.verifyProductPageIsOpened();
   await itemPage.verifyProductDetailsAreConsistent(product, beforeDetails);
 });

@@ -1,4 +1,4 @@
-import { Locator, Page, expect } from '@playwright/test';
+import { Page, expect } from '@playwright/test';
 import { LoginLocators } from '../constants/locators/LoginLocators';
 
 export class LoginPage {

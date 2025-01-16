@@ -9,14 +9,12 @@ test.beforeEach(async ({ page }) => {
 
 test('should reveal side menu when hamburger is clicked', async ({ page }) => {
   const inventoryPage = new InventoryPage(page);
-
   await inventoryPage.toggleSideMenu('open');
   await inventoryPage.verifySideMenuIsOpen();
 });
 
 test('should collapse side menu when hamburger icon is clicked again', async ({ page }) => {
   const inventoryPage = new InventoryPage(page);
-
   await inventoryPage.toggleSideMenu('open');
   await inventoryPage.toggleSideMenu('close');
   await inventoryPage.verifySideMenuIsClosed();

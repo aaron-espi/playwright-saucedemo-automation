@@ -1,6 +1,8 @@
 import { test } from '@playwright/test';
 import { InventoryPage } from '../pages/InventoryPage';
 import { LoginPage } from '../pages/LoginPage';
+import { SortOrder } from '../constants/enum/SortOrder';
+import { SortCriteria } from '../constants/enum/SortCriteria';
 
 let inventoryPage: InventoryPage;
 
@@ -11,21 +13,21 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('should sort products by price in descending order when "Price (High to Low)" is selected', async () => {
-  await inventoryPage.selectSortOption('hilo');
-  await inventoryPage.verifyPricesSorted('desc');
+  await inventoryPage.selectSortOption(SortCriteria.PriceHighToLow);
+  await inventoryPage.verifyPricesSorted(SortOrder.Descending);
 });
 
 test('should sort products by price in ascending order when "Price (Low to High)" is selected', async () => {
-  await inventoryPage.selectSortOption('lohi');
-  await inventoryPage.verifyPricesSorted('asc');
+  await inventoryPage.selectSortOption(SortCriteria.PriceLowToHigh);
+  await inventoryPage.verifyPricesSorted(SortOrder.Ascending);
 });
 
 test('should sort products by name in ascending order when "Name (A to Z)" is selected', async () => {
-  await inventoryPage.selectSortOption('az');
-  await inventoryPage.verifyProductsSortedByName('asc');
+  await inventoryPage.selectSortOption(SortCriteria.NameAtoZ);
+  await inventoryPage.verifyProductsSortedByName(SortOrder.Ascending);
 });
 
 test('should sort products by name in descending order when "Name (Z to A)" is selected', async () => {
-  await inventoryPage.selectSortOption('za');
-  await inventoryPage.verifyProductsSortedByName('desc');
+  await inventoryPage.selectSortOption(SortCriteria.NameZtoA);
+  await inventoryPage.verifyProductsSortedByName(SortOrder.Descending);
 });

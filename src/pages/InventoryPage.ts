@@ -1,5 +1,7 @@
 import { expect, Locator, Page } from '@playwright/test';
 import { InventoryLocators } from '../constants/locators/InventoryLocators';
+import { SortOrder } from '../constants/enum/SortOrder';
+import { SortCriteria } from '../constants/enum/SortCriteria';
 
 export class InventoryPage {
   page: Page;
@@ -79,17 +81,17 @@ export class InventoryPage {
     await product.locator(InventoryLocators.itemName).click();
   }
 
-  async selectSortOption(option: string) {
-    await this.page.locator(InventoryLocators.sortContainer).selectOption(option);
+  async selectSortOption(criteria: SortCriteria) {
+    await this.page.locator(InventoryLocators.sortContainer).selectOption(criteria);
   }
 
-  async verifyPricesSorted(order: 'asc' | 'desc') {
+  async verifyPricesSorted(order: SortOrder) {
     const prices = await this.getProductPrices();
-    const sortedPrices = [...prices].sort((a, b) => (order === 'asc' ? a - b : b - a));
+    const sortedPrices = [...prices].sort((a, b) => (order === SortOrder.Ascending ? a - b : b - a));
     expect(prices).toEqual(sortedPrices);
   }
 
-  async verifyProductsSortedByName(order: 'asc' | 'desc') {
+  async verifyProductsSortedByName(order: SortOrder) {
     const products = await this.page.locator(InventoryLocators.inventoryItem).all();
 
     const productNames = await Promise.all(
@@ -98,7 +100,9 @@ export class InventoryPage {
       )
     );
 
-    const sortedNames = [...productNames].sort((a, b) => (order === 'asc' ? a.localeCompare(b) : b.localeCompare(a)));
+    const sortedNames = [...productNames].sort((a, b) =>
+      order === SortOrder.Ascending ? a.localeCompare(b) : b.localeCompare(a)
+    );
 
     expect(productNames).toEqual(sortedNames);
   }
