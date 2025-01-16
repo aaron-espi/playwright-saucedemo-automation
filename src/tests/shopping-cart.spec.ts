@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
-import { ShoppingCartPage } from '../pages/ShoppingCartPage';
+import { CartPage } from '../pages/CartPage';
 
 test.beforeEach(async ({ page }) => {
   const loginPage = new LoginPage(page);
@@ -10,14 +10,14 @@ test.beforeEach(async ({ page }) => {
 
 test('should navigate to shopping cart page after clicking shopping cart button in header', async ({ page }) => {
   const inventoryPage = new InventoryPage(page);
-  const shoppingCartPage = new ShoppingCartPage(page);
+  const shoppingCartPage = new CartPage(page);
   await inventoryPage.clickOnShoppingCart();
   await shoppingCartPage.verifyShoppingCartPageLoaded();
 });
 
 test('should display an empty shopping cart if no products have been added previously', async ({ page }) => {
   const inventoryPage = new InventoryPage(page);
-  const shoppingCartPage = new ShoppingCartPage(page);
+  const shoppingCartPage = new CartPage(page);
   await inventoryPage.clickOnShoppingCart();
   await shoppingCartPage.verifyShoppingCartIsEmpty();
 });
