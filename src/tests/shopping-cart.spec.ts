@@ -14,3 +14,16 @@ test('should navigate to shopping cart page after clicking shopping cart button 
   await inventoryPage.clickOnShoppingCart();
   await shoppingCartPage.verifyShoppingCartPageLoaded();
 });
+
+test('should display an empty shopping cart if no products have been added previously', async ({ page }) => {
+  const inventoryPage = new InventoryPage(page);
+  const shoppingCartPage = new ShoppingCartPage(page);
+  await inventoryPage.clickOnShoppingCart();
+  await shoppingCartPage.verifyShoppingCartIsEmpty();
+});
+
+// comprobar que al añadir un objeto realmente se añade
+
+// comprobar que al añadir y quitarlo no se muestra
+
+// comprobar que al añadir, salir, volver a entrar, se queda el item

@@ -13,4 +13,10 @@ export class ShoppingCartPage {
     await expect(this.page.locator(ShoppingCartLocators.cartQuantity)).toBeVisible();
     await expect(this.page.locator(ShoppingCartLocators.continueShoppingButton)).toBeVisible();
   }
+
+  async verifyShoppingCartIsEmpty() {
+    const items = this.page.locator('[data-test="inventory-item"]');
+    const count = await items.count();
+    await expect(count).toBe(0);
+  }
 }
