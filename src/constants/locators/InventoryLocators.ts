@@ -13,4 +13,6 @@ export class InventoryLocators {
   static readonly sideMenu = 'div.bm-menu-wrap';
   static readonly openSideMenuButton = { role: Role.Button, name: 'Open Menu' };
   static readonly closeSideMenuButton = { role: Role.Button, name: 'Close Menu' };
+  static readonly logoutButton = { role: Role.Link, name: 'Logout' };
+  static readonly aboutButton = { role: Role.Link, name: 'About' };
 }

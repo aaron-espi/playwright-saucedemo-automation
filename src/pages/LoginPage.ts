@@ -19,7 +19,7 @@ export class LoginPage {
     await this.goto();
     await this.fillUsernameInput(username);
     await this.fillPasswordInput(password);
-    await this.clickOnLoginButton();
+    await this.clickOnLogin();
   }
 
   async fillUsernameInput(username: string) {
@@ -30,12 +30,18 @@ export class LoginPage {
     await this.page.locator(LoginLocators.passwordInput).fill(password);
   }
 
-  async clickOnLoginButton() {
+  async clickOnLogin() {
     await this.page.locator(LoginLocators.loginButton).click();
   }
 
   async verifyLoginWasNotSuccessful() {
     await expect(this.page.locator(LoginLocators.loginFailureMessage)).toBeVisible();
     await expect(this.page.locator(LoginLocators.loginFailureMessage)).toHaveText(this.loginFailureMessageText);
+  }
+
+  async verifyLoginPageLoaded() {
+    await expect(this.page.locator(LoginLocators.usernameInput)).toBeVisible();
+    await expect(this.page.locator(LoginLocators.passwordInput)).toBeVisible();
+    await expect(this.page.locator(LoginLocators.loginButton)).toBeVisible();
   }
 }

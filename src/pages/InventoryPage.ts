@@ -2,6 +2,7 @@ import { expect, Locator, Page } from '@playwright/test';
 import { InventoryLocators } from '../constants/locators/InventoryLocators';
 import { SortOrder } from '../constants/enum/SortOrder';
 import { SortCriteria } from '../constants/enum/SortCriteria';
+import { SideMenuAction } from '../constants/enum/SideMenuAction';
 
 export class InventoryPage {
   page: Page;
@@ -107,9 +108,11 @@ export class InventoryPage {
     expect(productNames).toEqual(sortedNames);
   }
 
-  async toggleSideMenu(action: 'open' | 'close') {
+  async toggleSideMenu(action: SideMenuAction) {
     const buttonName =
-      action === 'open' ? InventoryLocators.openSideMenuButton.name : InventoryLocators.closeSideMenuButton.name;
+      action === SideMenuAction.Open
+        ? InventoryLocators.openSideMenuButton.name
+        : InventoryLocators.closeSideMenuButton.name;
     await this.page.getByRole('button', { name: buttonName }).click();
   }
 
@@ -138,5 +141,15 @@ export class InventoryPage {
     await expect(sideMenu).not.toBeVisible();
     await expect(closeButton).not.toBeVisible();
     await expect(openButton).toBeVisible();
+  }
+
+  async clickOnLogout() {
+    await this.page
+      .getByRole(InventoryLocators.logoutButton.role, { name: InventoryLocators.logoutButton.name })
+      .click();
+  }
+
+  async clickOnAbout() {
+    await this.page.getByRole(InventoryLocators.aboutButton.role, { name: InventoryLocators.aboutButton.name }).click();
   }
 }
