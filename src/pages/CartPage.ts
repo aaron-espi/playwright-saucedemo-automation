@@ -7,14 +7,14 @@ export class CartPage {
     this.page = page;
   }
 
-  async verifyShoppingCartPageLoaded() {
+  async verifyCartPageLoaded() {
     await expect(this.page.locator(CartLocators.title)).toBeVisible();
     await expect(this.page.locator(CartLocators.checkoutButton)).toBeVisible();
     await expect(this.page.locator(CartLocators.cartQuantity)).toBeVisible();
     await expect(this.page.locator(CartLocators.continueShoppingButton)).toBeVisible();
   }
 
-  async verifyShoppingCartIsEmpty() {
+  async verifyCartIsEmpty() {
     const items = this.page.locator(CartLocators.inventoryItem);
     const count = await items.count();
     await expect(count).toBe(0);

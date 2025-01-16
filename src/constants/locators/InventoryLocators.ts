@@ -15,5 +15,5 @@ export class InventoryLocators {
   static readonly closeSideMenuButton = { role: Role.Button, name: 'Close Menu' };
   static readonly logoutButton = { role: Role.Link, name: 'Logout' };
   static readonly aboutButton = { role: Role.Link, name: 'About' };
-  static readonly shoppingCartButton = '[data-test="shopping-cart-link"]';
+  static readonly cartButton = '[data-test="shopping-cart-link"]';
 }
