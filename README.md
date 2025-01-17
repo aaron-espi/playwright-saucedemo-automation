@@ -31,7 +31,6 @@ playwright-saucedemo-automation/
 │   ├── tests/                          # Pruebas automatizadas
 │   │
 │   ├── pages/                          # Implementación del patrón Page Object Model (POM)
-│   │   └── (Clases de página, como LoginPage, InventoryPage, etc.)
 │   │
 │   └── constants/                      
 │       ├── enum/                       # Enumeraciones
