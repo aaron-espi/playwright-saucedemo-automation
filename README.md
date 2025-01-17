@@ -27,42 +27,23 @@ Este proyecto está estructurado de la siguiente manera:
 ```bash
 playwright-saucedemo-automation/
 │
-├── src/
-│   ├── tests/
-│   │   ├── cart.spec.ts
-│   │   ├── inventory.spec.ts
-│   │   ├── login.spec.ts
-│   │   ├── side-menu.spec.ts
-│   │   └── sort-inventory.spec.ts
+├── src/                                
+│   ├── tests/                          # Pruebas automatizadas
 │   │
-│   ├── pages/
-│   │   ├── AboutPage.ts
-│   │   ├── CardPage.ts
-│   │   ├── InventoryPage.ts
-│   │   ├── ItemPage.ts
-│   │   └── LoginPage.ts
+│   ├── pages/                          # Implementación del patrón Page Object Model (POM)
+│   │   └── (Clases de página, como LoginPage, InventoryPage, etc.)
 │   │
-│   └── constants/
-│       ├── enum/
-│       │   ├── Roles.ts
-│       │   ├── SideMenuAction.ts
-│       │   ├── SortCriteria.ts
-│       │   └── SortOrder.ts
-│       │
-│       ├── locators/
-│       │   ├── CartLocators.ts
-│       │   ├── InventoryLocators.ts
-│       │   ├── ItemLocators.ts
-│       │   └── LoginLocators.ts
-│       │
-│       └── StringConstants.ts
+│   └── constants/                      
+│       ├── enum/                       # Enumeraciones
+│       ├── locators/                   # Localizadores de los elementos de la UI
+│       └── StringConstants.ts          # Constantes de texto y mensajes
 │
-├── playwright.config.ts
-├── .gitignore
-├── package.json
-├── package-lock.json
-├── playwright-report/
-└── README.md
+├── playwright.config.ts                
+├── .gitignore                          
+├── package.json                        
+├── package-lock.json                   
+├── playwright-report/                  
+└── README.md                           
 ```
 
 ### Variables de Entorno
