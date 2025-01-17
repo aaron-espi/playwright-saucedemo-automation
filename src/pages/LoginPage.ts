@@ -1,11 +1,11 @@
 import { Page, expect } from '@playwright/test';
 import { LoginLocators } from '../constants/locators/LoginLocators';
+import { StringConstants } from '../constants/StringConstants';
 
 export class LoginPage {
   readonly page: Page;
 
-  readonly loginFailureMessageText: string =
-    'Epic sadface: Username and password do not match any user in this service';
+  readonly loginFailureMessageText: string = StringConstants.LOGIN_ERROR_MESSAGE;
 
   constructor(page: Page) {
     this.page = page;

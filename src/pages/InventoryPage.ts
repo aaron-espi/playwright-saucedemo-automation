@@ -3,11 +3,12 @@ import { InventoryLocators } from '../constants/locators/InventoryLocators';
 import { SortOrder } from '../constants/enum/SortOrder';
 import { SortCriteria } from '../constants/enum/SortCriteria';
 import { SideMenuAction } from '../constants/enum/SideMenuAction';
+import { StringConstants } from '../constants/StringConstants';
 
 export class InventoryPage {
   page: Page;
 
-  readonly addToCartButtonString: string = 'Add to cart';
+  readonly addToCartButtonString: string = StringConstants.ADD_TO_CART_BUTTON_TEXT;
 
   constructor(page: Page) {
     this.page = page;
@@ -96,9 +97,7 @@ export class InventoryPage {
     const items = await this.page.locator(InventoryLocators.inventoryItem).all();
 
     const itemNames = await Promise.all(
-      items.map(
-        async (item) => (await item.locator(InventoryLocators.itemName).textContent())?.toLowerCase() || ''
-      )
+      items.map(async (item) => (await item.locator(InventoryLocators.itemName).textContent())?.toLowerCase() || '')
     );
 
     const sortedNames = [...itemNames].sort((a, b) =>
