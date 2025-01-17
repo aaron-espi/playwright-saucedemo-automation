@@ -25,23 +25,44 @@ npm install
 Este proyecto está estructurado de la siguiente manera:
 
 ```bash
-├── pages/               # Contiene las clases de las páginas (POM)
-
-│   ├── InventoryPage.ts # Página de inventario
-
-│   ├── ItemPage.ts      # Página del producto
-
-│   └── LoginPage.ts     # Página de login
-
-├── tests/               # Carpeta de pruebas
-
-│   └── login.spec.ts    # Pruebas relacionadas con el inicio de sesión
-
-├── .env                 # Archivo de configuración de variables de entorno
-
-├── package.json         # Configuración de dependencias y scripts
-
-└── README.md            # Este archivo
+playwright-saucedemo-automation/
+│
+├── src/
+│   ├── tests/
+│   │   ├── cart.spec.ts
+│   │   ├── inventory.spec.ts
+│   │   ├── login.spec.ts
+│   │   ├── side-menu.spec.ts
+│   │   └── sort-inventory.spec.ts
+│   │
+│   ├── pages/
+│   │   ├── AboutPage.ts
+│   │   ├── CardPage.ts
+│   │   ├── InventoryPage.ts
+│   │   ├── ItemPage.ts
+│   │   └── LoginPage.ts
+│   │
+│   └── constants/
+│       ├── enum/
+│       │   ├── Roles.ts
+│       │   ├── SideMenuAction.ts
+│       │   ├── SortCriteria.ts
+│       │   └── SortOrder.ts
+│       │
+│       ├── locators/
+│       │   ├── CartLocators.ts
+│       │   ├── InventoryLocators.ts
+│       │   ├── ItemLocators.ts
+│       │   └── LoginLocators.ts
+│       │
+│       └── StringConstants.ts
+│
+├── playwright.config.ts
+├── .gitignore
+├── package.json
+├── package-lock.json
+├── playwright-report/
+└── README.md
 ```
 
 ### Variables de Entorno
