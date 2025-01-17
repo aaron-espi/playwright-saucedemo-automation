@@ -6,7 +6,7 @@ import { SideMenuAction } from '../constants/enum/SideMenuAction';
 
 test.beforeEach(async ({ page }) => {
   const loginPage = new LoginPage(page);
-  await loginPage.login('standard_user', 'secret_sauce');
+  await loginPage.login(process.env.VALID_USERNAME!, process.env.VALID_PASSWORD!);
 });
 
 test('should reveal side menu when hamburger is clicked', async ({ page }) => {

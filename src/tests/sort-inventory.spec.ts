@@ -9,7 +9,7 @@ let inventoryPage: InventoryPage;
 test.beforeEach(async ({ page }) => {
   inventoryPage = new InventoryPage(page);
   const loginPage = new LoginPage(page);
-  await loginPage.login('standard_user', 'secret_sauce');
+  await loginPage.login(process.env.VALID_USERNAME!, process.env.VALID_PASSWORD!);
 });
 
 test('should sort products by price in descending order when "Price (High to Low)" is selected', async () => {

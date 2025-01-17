@@ -5,7 +5,7 @@ import { LoginPage } from '../pages/LoginPage';
 
 test.beforeEach(async ({ page }) => {
   const loginPage = new LoginPage(page);
-  await loginPage.login('standard_user', 'secret_sauce');
+  await loginPage.login(process.env.VALID_USERNAME!, process.env.VALID_PASSWORD!);
 });
 
 test('should display product price, title, description, image and add-to-cart button on the product listing page', async ({

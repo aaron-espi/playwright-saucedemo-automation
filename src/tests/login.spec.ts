@@ -10,8 +10,8 @@ test.beforeEach(async ({ page }) => {
 test('should log in successfully with valid credentials', async ({ page }) => {
   const loginPage = new LoginPage(page);
   const inventoryPage = new InventoryPage(page);
-  await loginPage.fillUsernameInput('standard_user');
-  await loginPage.fillPasswordInput('secret_sauce');
+  await loginPage.fillUsernameInput(process.env.VALID_USERNAME!);
+  await loginPage.fillPasswordInput(process.env.VALID_PASSWORD!);
   await loginPage.clickOnLogin();
   await inventoryPage.verifyHomePageLoaded();
 });
@@ -19,8 +19,8 @@ test('should log in successfully with valid credentials', async ({ page }) => {
 test('should not log in with invalid credentials', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.goto();
-  await loginPage.fillUsernameInput('not_existing_user');
-  await loginPage.fillPasswordInput('secret_sauce');
+  await loginPage.fillUsernameInput(process.env.INVALID_USERNAME!);
+  await loginPage.fillPasswordInput(process.env.INVALID_PASSWORD!);
   await loginPage.clickOnLogin();
   await loginPage.verifyLoginWasNotSuccessful();
 });

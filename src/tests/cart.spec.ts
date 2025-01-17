@@ -5,7 +5,7 @@ import { CartPage } from '../pages/CartPage';
 
 test.beforeEach(async ({ page }) => {
   const loginPage = new LoginPage(page);
-  await loginPage.login('standard_user', 'secret_sauce');
+  await loginPage.login(process.env.VALID_USERNAME!, process.env.VALID_PASSWORD!);
 });
 
 test('should navigate to shopping cart page after clicking shopping cart button in header', async ({ page }) => {
