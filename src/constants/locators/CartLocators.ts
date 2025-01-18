@@ -1,13 +1,13 @@
-import { Role } from '../enum/Roles';
+import { CommonLocators } from './CommonLocators';
 
 export class CartLocators {
-  static readonly title = '[data-test="title"]';
+  static readonly title = CommonLocators.title;
   static readonly checkoutButton = '[data-test="checkout"]';
   static readonly continueShoppingButton = '[data-test="continue-shopping"]';
   static readonly cartQuantity = '[data-test="cart-quantity-label"]';
   static readonly inventoryItem = '[data-test="inventory-item"]';
-  static readonly itemName = '[data-test="inventory-item-name"]';
-  static readonly itemDescription = '[data-test="inventory-item-desc"]';
-  static readonly itemPrice = '[data-test="inventory-item-price"]';
-  static readonly removeItemButton = { role: Role.Button, name: 'Remove' };
+  static readonly itemName = CommonLocators.itemName;
+  static readonly itemDescription = CommonLocators.itemDescription;
+  static readonly itemPrice = CommonLocators.itemPrice;
+  static readonly removeItemButton = CommonLocators.itemRemoveFromCartButton;
 }
