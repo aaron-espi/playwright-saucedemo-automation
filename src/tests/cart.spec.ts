@@ -2,6 +2,7 @@ import { test } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
 import { CartPage } from '../pages/CartPage';
+import { CartButtonState } from '../constants/enum/CartButtonState';
 
 test.beforeEach(async ({ page }) => {
   const loginPage = new LoginPage(page);
@@ -13,6 +14,14 @@ test('should navigate to shopping cart page after clicking shopping cart button 
   const cartPage = new CartPage(page);
   await inventoryPage.clickOnCart();
   await cartPage.verifyCartPageLoaded();
+});
+
+test('should toggle add/remove button text when adding/removing item from cart', async ({ page }) => {
+  const inventoryPage = new InventoryPage(page);
+  await inventoryPage.addProductToCart(0);
+  await inventoryPage.verifyAddToCartButtonText(0, CartButtonState.Remove);
+  await inventoryPage.removeProductFromCart(0);
+  await inventoryPage.verifyAddToCartButtonText(0, CartButtonState.AddToCart);
 });
 
 test('should display an empty shopping cart if no products have been added previously', async ({ page }) => {

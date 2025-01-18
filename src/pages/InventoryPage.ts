@@ -3,12 +3,11 @@ import { InventoryLocators } from '../constants/locators/InventoryLocators';
 import { SortOrder } from '../constants/enum/SortOrder';
 import { SortCriteria } from '../constants/enum/SortCriteria';
 import { SideMenuAction } from '../constants/enum/SideMenuAction';
-import { StringConstants } from '../constants/StringConstants';
+import { CartButtonState } from '../constants/enum/CartButtonState';
+import { Role } from '../constants/enum/Roles';
 
 export class InventoryPage {
   page: Page;
-
-  readonly addToCartButtonString: string = StringConstants.ADD_TO_CART_BUTTON_TEXT;
 
   constructor(page: Page) {
     this.page = page;
@@ -34,7 +33,6 @@ export class InventoryPage {
 
   async verifyEachProductDetails(selector: string, isTextCheck: boolean = false) {
     const items = await this.page.locator(InventoryLocators.inventoryItem).all();
-
     for (const item of items) {
       const element = item.locator(selector);
       await expect(element).toBeVisible();
@@ -46,20 +44,24 @@ export class InventoryPage {
 
   async verifyAddToCartButtons() {
     const items = await this.page.locator(InventoryLocators.inventoryItem).all();
-
     for (const item of items) {
       const itemAddToCartButton = item.getByRole(InventoryLocators.itemAddToCartButton.role, {
         name: InventoryLocators.itemAddToCartButton.name,
       });
       await expect(itemAddToCartButton).toBeVisible();
       await expect(itemAddToCartButton).toBeEnabled();
-      await expect(itemAddToCartButton).toHaveText(this.addToCartButtonString);
+      await expect(itemAddToCartButton).toHaveText(CartButtonState.AddToCart);
     }
+  }
+
+  async verifyAddToCartButtonText(index: number, expectedState: CartButtonState) {
+    const item = await this.getProduct(index);
+    const locator = item.getByRole(Role.Button, { name: expectedState });
+    await expect(locator).toHaveText(expectedState);
   }
 
   async getProductPrices() {
     const items = await this.page.locator(InventoryLocators.inventoryItem).all();
-
     return Promise.all(
       items.map(async (item) => {
         const priceText = await item.locator(InventoryLocators.itemPrice).innerText();
@@ -95,11 +97,9 @@ export class InventoryPage {
 
   async verifyProductsSortedByName(order: SortOrder) {
     const items = await this.page.locator(InventoryLocators.inventoryItem).all();
-
     const itemNames = await Promise.all(
       items.map(async (item) => (await item.locator(InventoryLocators.itemName).textContent())?.toLowerCase() || '')
     );
-
     const sortedNames = [...itemNames].sort((a, b) =>
       order === SortOrder.Ascending ? a.localeCompare(b) : b.localeCompare(a)
     );
@@ -129,14 +129,12 @@ export class InventoryPage {
 
   async verifySideMenuIsOpen() {
     const { sideMenu, closeButton } = await this.getSideMenuElements();
-
     await expect(sideMenu).toBeVisible();
     await expect(closeButton).toBeVisible();
   }
 
   async verifySideMenuIsClosed() {
     const { sideMenu, closeButton, openButton } = await this.getSideMenuElements();
-
     await expect(sideMenu).not.toBeVisible();
     await expect(closeButton).not.toBeVisible();
     await expect(openButton).toBeVisible();
@@ -161,5 +159,15 @@ export class InventoryPage {
 
   async clickOnCart() {
     await this.page.locator(InventoryLocators.cartButton).click();
+  }
+
+  async removeProductFromCart(itemIndex: number) {
+    const items = this.page.locator(InventoryLocators.inventoryItem);
+    const item = items.nth(itemIndex);
+    await item
+      .getByRole(InventoryLocators.itemRemoveFromCartButton.role, {
+        name: InventoryLocators.itemRemoveFromCartButton.name,
+      })
+      .click();
   }
 }
