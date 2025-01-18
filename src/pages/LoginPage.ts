@@ -1,6 +1,7 @@
 import { Page, expect } from '@playwright/test';
 import { LoginLocators } from '../constants/locators/LoginLocators';
 import { StringConstants } from '../constants/StringConstants';
+import { config } from '../config';
 
 export class LoginPage {
   readonly page: Page;
@@ -12,7 +13,7 @@ export class LoginPage {
   }
 
   async goto() {
-    await this.page.goto('https://www.saucedemo.com/');
+    await this.page.goto(config.baseUrl);
   }
 
   async login(username: string, password: string) {

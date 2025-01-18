@@ -3,10 +3,11 @@ import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
 import { AboutPage } from '../pages/AboutPage';
 import { SideMenuAction } from '../constants/enum/SideMenuAction';
+import { config } from '../config';
 
 test.beforeEach(async ({ page }) => {
   const loginPage = new LoginPage(page);
-  await loginPage.login(process.env.VALID_USERNAME!, process.env.VALID_PASSWORD!);
+  await loginPage.login(config.validUsername, config.validPassword);
 });
 
 test('should reveal side menu when hamburger is clicked', async ({ page }) => {

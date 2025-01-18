@@ -4,10 +4,11 @@ import { InventoryPage } from '../pages/InventoryPage';
 import { ItemPage } from '../pages/ItemPage';
 import { CartPage } from '../pages/CartPage';
 import { CartButtonState } from '../constants/enum/CartButtonState';
+import { config } from '../config';
 
 test.beforeEach(async ({ page }) => {
   const loginPage = new LoginPage(page);
-  await loginPage.login(process.env.VALID_USERNAME!, process.env.VALID_PASSWORD!);
+  await loginPage.login(config.validUsername, config.validPassword);
 });
 
 test('should navigate to shopping cart page after clicking shopping cart button in header', async ({ page }) => {

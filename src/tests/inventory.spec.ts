@@ -2,10 +2,11 @@ import { test } from '@playwright/test';
 import { InventoryPage } from '../pages/InventoryPage';
 import { ItemPage } from '../pages/ItemPage';
 import { LoginPage } from '../pages/LoginPage';
+import { config } from '../config';
 
 test.beforeEach(async ({ page }) => {
   const loginPage = new LoginPage(page);
-  await loginPage.login(process.env.VALID_USERNAME!, process.env.VALID_PASSWORD!);
+  await loginPage.login(config.validUsername, config.validPassword);
 });
 
 test('should display product price, title, description, image and add-to-cart button on the product listing page', async ({

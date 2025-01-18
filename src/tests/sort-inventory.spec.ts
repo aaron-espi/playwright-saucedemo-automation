@@ -3,13 +3,14 @@ import { InventoryPage } from '../pages/InventoryPage';
 import { LoginPage } from '../pages/LoginPage';
 import { SortOrder } from '../constants/enum/SortOrder';
 import { SortCriteria } from '../constants/enum/SortCriteria';
+import { config } from '../config';
 
 let inventoryPage: InventoryPage;
 
 test.beforeEach(async ({ page }) => {
   inventoryPage = new InventoryPage(page);
   const loginPage = new LoginPage(page);
-  await loginPage.login(process.env.VALID_USERNAME!, process.env.VALID_PASSWORD!);
+  await loginPage.login(config.validUsername, config.validPassword);
 });
 
 test('should sort products by price in descending order when "Price (High to Low)" is selected', async () => {
