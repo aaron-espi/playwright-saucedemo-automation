@@ -1,5 +1,7 @@
 import { expect, Locator, Page } from '@playwright/test';
 import { ItemLocators } from '../constants/locators/ItemLocators';
+import { CartButtonState } from '../constants/enum/CartButtonState';
+import { Role } from '../constants/enum/Roles';
 
 export class ItemPage {
   readonly page: Page;
@@ -24,5 +26,24 @@ export class ItemPage {
     await expect(beforeDetails.itemName).toBe(afterDetails.itemName);
     await expect(beforeDetails.itemDescription).toBe(afterDetails.itemDescription);
     await expect(beforeDetails.itemPrice).toBe(afterDetails.itemPrice);
+  }
+
+  async addProductToCart() {
+    await this.page
+      .getByRole(ItemLocators.itemAddToCartButton.role, { name: ItemLocators.itemAddToCartButton.name })
+      .click();
+  }
+
+  async verifyAddToCartButtonText(expectedState: CartButtonState) {
+    const locator = this.page.getByRole(Role.Button, { name: expectedState });
+    await expect(locator).toHaveText(expectedState);
+  }
+
+  async removeProductFromCart() {
+    await this.page
+      .getByRole(ItemLocators.itemRemoveFromCartButton.role, {
+        name: ItemLocators.itemRemoveFromCartButton.name,
+      })
+      .click();
   }
 }

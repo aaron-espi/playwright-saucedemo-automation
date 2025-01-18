@@ -1,5 +1,9 @@
+import { Role } from '../enum/Roles';
+
 export class ItemLocators {
   static readonly itemDetailsContainer = '.inventory_details_container';
+  static readonly itemAddToCartButton = { role: Role.Button, name: 'Add to cart' };
+  static readonly itemRemoveFromCartButton = { role: Role.Button, name: 'Remove' };
   static readonly itemName = '[data-test="inventory-item-name"]';
   static readonly itemPrice = '[data-test="inventory-item-price"]';
   static readonly itemDescription = '[data-test="inventory-item-desc"]';
