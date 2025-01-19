@@ -7,7 +7,7 @@ import { CartButtonState } from '../constants/enum/CartButtonState';
 import { Role } from '../constants/enum/Roles';
 
 export class InventoryPage {
-  page: Page;
+  readonly page: Page;
 
   constructor(page: Page) {
     this.page = page;

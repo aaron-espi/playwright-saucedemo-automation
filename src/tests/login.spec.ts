@@ -24,4 +24,30 @@ test('should not log in with invalid credentials', async ({ page }) => {
   await loginPage.fillPasswordInput(config.invalidPassword);
   await loginPage.clickOnLogin();
   await loginPage.verifyLoginWasNotSuccessful();
+  await loginPage.verifyInvalidCredentialsMessage();
+});
+
+test('should not log in with empty username', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+  await loginPage.fillPasswordInput(config.validPassword);
+  await loginPage.clickOnLogin();
+  await loginPage.verifyLoginWasNotSuccessful();
+  await loginPage.verifyUsernameRequiredMessage();
+});
+
+test('should not log in with empty password', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+  await loginPage.fillUsernameInput(config.validUsername);
+  await loginPage.clickOnLogin();
+  await loginPage.verifyLoginWasNotSuccessful();
+  await loginPage.verifyPasswordRequiredMessage();
+});
+
+test('should not log in with a blocked user account', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+  await loginPage.fillUsernameInput(config.lockedUsername);
+  await loginPage.fillPasswordInput(config.validPassword);
+  await loginPage.clickOnLogin();
+  await loginPage.verifyLoginWasNotSuccessful();
+  await loginPage.verifyUserLockedMessage();
 });

@@ -6,14 +6,18 @@ import { config } from '../config';
 export class LoginPage {
   readonly page: Page;
 
-  readonly loginFailureMessageText: string = StringConstants.LOGIN_ERROR_MESSAGE;
+  readonly baseUrl: string = config.baseUrl;
+  readonly invalidCredentialsMessageText: string = StringConstants.INVALID_CREDENTIALS;
+  readonly userLockedMessageText: string = StringConstants.USER_LOCKED;
+  readonly usernameRequiredMessageText: string = StringConstants.USERNAME_REQUIRED;
+  readonly passwordRequiredMessageText: string = StringConstants.PASSWORD_REQUIRED;
 
   constructor(page: Page) {
     this.page = page;
   }
 
   async goto() {
-    await this.page.goto(config.baseUrl);
+    await this.page.goto(this.baseUrl);
   }
 
   async login(username: string, password: string) {
@@ -37,7 +41,26 @@ export class LoginPage {
 
   async verifyLoginWasNotSuccessful() {
     await expect(this.page.locator(LoginLocators.loginFailureMessage)).toBeVisible();
-    await expect(this.page.locator(LoginLocators.loginFailureMessage)).toHaveText(this.loginFailureMessageText);
+  }
+
+  async verifyInvalidCredentialsMessage() {
+    await this.verifyErrorMessage(this.invalidCredentialsMessageText);
+  }
+
+  async verifyUsernameRequiredMessage() {
+    await this.verifyErrorMessage(this.usernameRequiredMessageText);
+  }
+
+  async verifyPasswordRequiredMessage() {
+    await this.verifyErrorMessage(this.passwordRequiredMessageText);
+  }
+
+  async verifyUserLockedMessage() {
+    await this.verifyErrorMessage(this.userLockedMessageText);
+  }
+
+  async verifyErrorMessage(expectedMessage: string) {
+    await expect(this.page.locator(LoginLocators.loginFailureMessage)).toHaveText(expectedMessage);
   }
 
   async verifyLoginPageLoaded() {
