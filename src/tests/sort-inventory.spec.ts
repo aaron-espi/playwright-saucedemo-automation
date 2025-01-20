@@ -3,7 +3,7 @@ import { InventoryPage } from '../pages/InventoryPage';
 import { LoginPage } from '../pages/LoginPage';
 import { SortOrder } from '../constants/enum/SortOrder';
 import { SortCriteria } from '../constants/enum/SortCriteria';
-import { config } from '../config';
+import { config } from '../../playwright.config';
 
 let inventoryPage: InventoryPage;
 

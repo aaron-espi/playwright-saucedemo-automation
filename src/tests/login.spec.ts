@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
-import { config } from '../config';
+import { config } from '../../playwright.config';
 
 test.beforeEach(async ({ page }) => {
   const loginPage = new LoginPage(page);

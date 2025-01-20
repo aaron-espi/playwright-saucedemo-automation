@@ -4,7 +4,7 @@ import { InventoryPage } from '../pages/InventoryPage';
 import { ItemPage } from '../pages/ItemPage';
 import { CartPage } from '../pages/CartPage';
 import { CartButtonState } from '../constants/enum/CartButtonState';
-import { config } from '../config';
+import { config } from '../../playwright.config';
 
 test.beforeEach(async ({ page }) => {
   const loginPage = new LoginPage(page);
