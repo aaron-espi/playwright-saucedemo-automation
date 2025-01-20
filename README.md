@@ -1,4 +1,4 @@
-# Automation Project with Playwright
+# Automated Web Testing with Playwright
 
 This repository demonstrates my **QA and test automation skills** using **Playwright**. It is not a real store, but a project created as part of my **internal portfolio** to showcase my ability to write automated tests for web applications. The focus is on simulating user scenarios and ensuring the quality and proper functioning of critical system features.
 
