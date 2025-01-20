@@ -15,7 +15,10 @@ export class InventoryLocators {
   static readonly sideMenu = 'div.bm-menu-wrap';
   static readonly openSideMenuButton = { role: Role.Button, name: 'Open Menu' };
   static readonly closeSideMenuButton = { role: Role.Button, name: 'Close Menu' };
-  static readonly logoutButton = { role: Role.Link, name: 'Logout' };
+  static readonly allItemsButton = { role: Role.Link, name: 'All Items' };
   static readonly aboutButton = { role: Role.Link, name: 'About' };
+  static readonly logoutButton = { role: Role.Link, name: 'Logout' };
+  static readonly resetAppStateButton = { role: Role.Link, name: 'Reset App State' };
   static readonly cartButton = CommonLocators.cartButton;
+  static readonly shoppingCartBadge = '[data-test="shopping-cart-badge"]';
 }

@@ -16,6 +16,20 @@ test('should reveal side menu when hamburger is clicked', async ({ page }) => {
   await inventoryPage.verifySideMenuIsOpen();
 });
 
+test('should display all side menu options when opened', async ({ page }) => {
+  const inventoryPage = new InventoryPage(page);
+  await inventoryPage.toggleSideMenu(SideMenuAction.Open);
+  await inventoryPage.verifySideMenuOptionsAreVisible();
+});
+
+test('should reset app state when reset button is clicked', async ({ page }) => {
+  const inventoryPage = new InventoryPage(page);
+  await inventoryPage.addProductToCart(0);
+  await inventoryPage.toggleSideMenu(SideMenuAction.Open);
+  await inventoryPage.clickOnResetAppState();
+  await inventoryPage.verifyCartIsEmpty();
+});
+
 test('should collapse side menu when hamburger icon is clicked again', async ({ page }) => {
   const inventoryPage = new InventoryPage(page);
   await inventoryPage.toggleSideMenu(SideMenuAction.Open);

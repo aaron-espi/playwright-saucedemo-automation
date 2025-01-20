@@ -140,6 +140,31 @@ export class InventoryPage {
     await expect(openButton).toBeVisible();
   }
 
+  async verifySideMenuOptionsAreVisible() {
+    await expect(
+      this.page.getByRole(InventoryLocators.allItemsButton.role, { name: InventoryLocators.allItemsButton.name })
+    ).toBeVisible();
+    await expect(
+      this.page.getByRole(InventoryLocators.aboutButton.role, { name: InventoryLocators.aboutButton.name })
+    ).toBeVisible();
+    await expect(
+      this.page.getByRole(InventoryLocators.logoutButton.role, { name: InventoryLocators.logoutButton.name })
+    ).toBeVisible();
+    await expect(
+      this.page.getByRole(InventoryLocators.resetAppStateButton.role, {
+        name: InventoryLocators.resetAppStateButton.name,
+      })
+    ).toBeVisible();
+  }
+
+  async clickOnResetAppState() {
+    await this.page
+      .getByRole(InventoryLocators.resetAppStateButton.role, {
+        name: InventoryLocators.resetAppStateButton.name,
+      })
+      .click();
+  }
+
   async clickOnLogout() {
     await this.page
       .getByRole(InventoryLocators.logoutButton.role, { name: InventoryLocators.logoutButton.name })
@@ -169,5 +194,10 @@ export class InventoryPage {
         name: InventoryLocators.itemRemoveFromCartButton.name,
       })
       .click();
+  }
+
+  async verifyCartIsEmpty() {
+    const shoppingCartBadge = await this.page.locator(InventoryLocators.shoppingCartBadge);
+    await expect(shoppingCartBadge).not.toBeVisible();
   }
 }
