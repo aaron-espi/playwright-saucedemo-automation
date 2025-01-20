@@ -38,11 +38,11 @@ playwright-saucedemo-automation/
 │       ├── locators/                   # UI element locators
 │       └── StringConstants.ts          # Text constants and messages
 │
+├── playwright-report/                  
 ├── playwright.config.ts                
 ├── .gitignore                          
 ├── package.json                        
 ├── package-lock.json                   
-├── playwright-report/                  
 └── README.md                            
 ```
 
