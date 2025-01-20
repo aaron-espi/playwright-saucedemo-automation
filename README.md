@@ -1,12 +1,12 @@
-# Proyecto de Automatización con Playwright
+# Automation Project with Playwright
 
-Este repositorio es una **demostración de mis habilidades en QA y automatización de pruebas** utilizando **Playwright**. No es una tienda real, sino un proyecto creado como parte de mi **portfolio profesional**. El propósito es mostrar mi capacidad para escribir pruebas automatizadas para una aplicación web, simular escenarios de usuario y garantizar la calidad y el correcto funcionamiento de las funcionalidades clave del sistema, como el inicio de sesión, la navegación de productos, y la gestión del carrito de compras.
+This repository demonstrates my **QA and test automation skills** using **Playwright**. It is not a real store, but a project created as part of my **internal portfolio** to showcase my ability to write automated tests for web applications. The focus is on simulating user scenarios and ensuring the quality and proper functioning of critical system features.
 
-Las pruebas cubren diferentes funcionalidades de la página de ejemplo, y son ejecutadas en un entorno controlado para validar la estabilidad y la experiencia de usuario de la aplicación.
+### Software requirements
 
-### Requisitos previos
+To run the tests, make sure you have the following installed:
 
-Para poder ejecutar las pruebas, asegúrate de tener instalado lo siguiente:
+• **IDE**
 
 • **Node.js**
 
@@ -14,71 +14,76 @@ Para poder ejecutar las pruebas, asegúrate de tener instalado lo siguiente:
 
 • **dotenv**
 
-Para instalar las dependencias necesarias, corre el siguiente comando en la raíz del proyecto:
+To install the necessary dependencies, run the following command at the root of the project:
 
 ```bash
 npm install
 ```
 
-### Estructura del Proyecto
+### Project Structure
 
-Este proyecto está estructurado de la siguiente manera:
+This project is structured as follows:
 
 ```bash
 playwright-saucedemo-automation/
 │
-├── src/                                
-│   ├── tests/                          # Pruebas automatizadas
+├── src/                                 
+│   ├── tests/                          # Automated tests
 │   │
-│   ├── pages/                          # Implementación del patrón Page Object Model (POM)
+│   ├── pages/                          # Page objects that encapsulate the UI elements and interactions.
 │   │
-│   └── constants/                      
-│       ├── enum/                       # Enumeraciones
-│       ├── locators/                   # Localizadores de los elementos de la UI
-│       └── StringConstants.ts          # Constantes de texto y mensajes
+│   └── constants/                       
+│       ├── enum/                       # Enumerations
+│       ├── locators/                   # UI element locators
+│       └── StringConstants.ts          # Text constants and messages
 │
 ├── playwright.config.ts                
 ├── .gitignore                          
 ├── package.json                        
 ├── package-lock.json                   
 ├── playwright-report/                  
-└── README.md                           
+└── README.md                            
 ```
 
-### Variables de Entorno
+### Environment Variables
 
-El proyecto requiere un archivo .env en la raíz del proyecto para configurar las credenciales de acceso al sistema. En el archivo .env debes añadir las siguientes variables:
+The project requires a .env file at the root of the project to configure the system access credentials. In the .env file, you should add the following variables:
 
-### Variables necesarias
+### Required Variables
 
-• **VALID_USERNAME:** El nombre de usuario válido para realizar el login.
+• **VALID_USERNAME:** The valid username for logging in.
 
-• **VALID_PASSWORD:** La contraseña correspondiente al usuario válido.
+• **VALID_PASSWORD:** The corresponding password for the valid user.
 
-• **INVALID_USERNAME:** Un nombre de usuario incorrecto para probar el inicio de sesión fallido.
+• **INVALID_USERNAME:** An incorrect username to test failed login.
 
-• **INVALID_PASSWORD:** Una contraseña incorrecta para probar el inicio de sesión fallido.
+• **INVALID_PASSWORD:** An incorrect password to test failed login.
 
-Este archivo se debe añadir a tu .gitignore para evitar que las credenciales se suban a un repositorio público.
+• **LOCKED_USERNAME:** A locked username to test login failure due to account lock.
 
-### Ejecución de Pruebas
+• **BASE_URL:** The base URL of the application for running the tests.
 
-Una vez tengas las credenciales configuradas en el archivo .env, puedes ejecutar las pruebas utilizando Playwright.
+• **ABOUT_URL:** The URL of the "About" page of the application.
 
-### Ejecutar todas las pruebas
+
+### Running Tests
+
+Once the variables are set up in the .env file, you can run the tests using Playwright.
+
+### Run all tests
 
 ```bash
 npx playwright test
 ```
 
-### Ejecutar una prueba específica
+### Run a specific test
 
-Si solo quieres ejecutar una prueba específica, puedes usar el siguiente comando:
+If you want to run a specific test, you can use the following command:
 
 ```bash
 npx playwright test tests/login.spec.ts
 ```
 
-### Generar reporte de prueba
+### Generate Test Report
 
-Al finalizar la ejecución de las pruebas, Playwright generará automáticamente un reporte que podrás revisar en la terminal o en los archivos de salida configurados.
+After the tests are executed, Playwright will automatically generate a report that you can review in the terminal or in the configured output files.
