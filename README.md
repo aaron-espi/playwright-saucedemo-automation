@@ -1,8 +1,6 @@
 # Automated Web Testing with Playwright
 
-This repository demonstrates my **QA and test automation skills** using **Playwright**. It is not a real store, but a project created as part of my **internal portfolio** to showcase my ability to write automated tests for web applications. The focus is on simulating user scenarios and ensuring the quality and proper functioning of critical system features.
-
----
+This repository demonstrates my **QA and test automation skills** using **Playwright**. It is a project created as part of my **internal portfolio** to showcase my ability to write automated tests for web applications. The focus of this project is on simulating real-world user scenarios and ensuring the quality and proper functioning of critical system features. Although this is not a real store, the project simulates the testing of a sample e-commerce platform (SauceDemo) to validate key functionalities like login, product navigation, and shopping cart management.
 
 ### Software Requirements
 
