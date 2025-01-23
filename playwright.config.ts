@@ -4,6 +4,9 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export const config = {
+  buyerFirstName: process.env.BUYER_FIRST_NAME!,
+  buyerLastName: process.env.BUYER_LAST_NAME!,
+  buyerZip: process.env.BUYER_ZIP_CODE!,
   validUsername: process.env.VALID_USERNAME!,
   validPassword: process.env.VALID_PASSWORD!,
   invalidUsername: process.env.INVALID_USERNAME!,

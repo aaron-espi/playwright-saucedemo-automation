@@ -4,7 +4,7 @@ import { CommonLocators } from './CommonLocators';
 export class InventoryLocators {
   static readonly title = CommonLocators.title;
   static readonly inventoryContainer = '[data-test="inventory-container"]';
-  static readonly inventoryItem = '[data-test="inventory-item"]';
+  static readonly inventoryItem = CommonLocators.inventoryItem;
   static readonly itemAddToCartButton = CommonLocators.itemAddToCartButton;
   static readonly itemRemoveFromCartButton = CommonLocators.itemRemoveFromCartButton;
   static readonly itemName = CommonLocators.itemName;

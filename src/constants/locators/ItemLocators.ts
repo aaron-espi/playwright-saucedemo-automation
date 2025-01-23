@@ -1,4 +1,3 @@
-import { Role } from '../enum/Roles';
 import { CommonLocators } from './CommonLocators';
 
 export class ItemLocators {

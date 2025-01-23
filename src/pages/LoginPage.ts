@@ -39,10 +39,6 @@ export class LoginPage {
     await this.page.locator(LoginLocators.loginButton).click();
   }
 
-  async verifyLoginWasNotSuccessful() {
-    await expect(this.page.locator(LoginLocators.loginFailureMessage)).toBeVisible();
-  }
-
   async verifyInvalidCredentialsMessage() {
     await this.verifyErrorMessage(this.invalidCredentialsMessageText);
   }
@@ -60,6 +56,7 @@ export class LoginPage {
   }
 
   async verifyErrorMessage(expectedMessage: string) {
+    await expect(this.page.locator(LoginLocators.loginFailureMessage)).toBeVisible();
     await expect(this.page.locator(LoginLocators.loginFailureMessage)).toHaveText(expectedMessage);
   }
 

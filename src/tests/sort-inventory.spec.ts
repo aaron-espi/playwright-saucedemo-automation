@@ -5,11 +5,13 @@ import { SortOrder } from '../constants/enum/SortOrder';
 import { SortCriteria } from '../constants/enum/SortCriteria';
 import { config } from '../../playwright.config';
 
+let loginPage: LoginPage;
 let inventoryPage: InventoryPage;
 
 test.beforeEach(async ({ page }) => {
   inventoryPage = new InventoryPage(page);
-  const loginPage = new LoginPage(page);
+  loginPage = new LoginPage(page);
+
   await loginPage.login(config.validUsername, config.validPassword);
 });
 
