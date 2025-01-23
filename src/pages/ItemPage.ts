@@ -46,4 +46,30 @@ export class ItemPage {
       })
       .click();
   }
+
+    async goBackToInventory() {
+      await this.page.locator(ItemLocators.backToProductsButton).click();
+    }
+
+  async verifyProductVisibility(locator: string, isNotEmpty = false) {
+    const element = this.page.locator(locator);
+    await expect(element).toBeVisible();
+    if (isNotEmpty) {
+      await expect(element).not.toBeEmpty();
+    }
+  }
+
+  async verifyProductDetailsOnItemPage() {
+    await this.verifyProductVisibility(ItemLocators.itemName, true);
+    await this.verifyProductVisibility(ItemLocators.itemPrice);
+    await this.verifyProductVisibility(ItemLocators.itemDescription, true);
+    await this.verifyProductVisibility(ItemLocators.itemImage);
+
+    const itemAddToCartButton = this.page.getByRole(ItemLocators.itemAddToCartButton.role, {
+      name: ItemLocators.itemAddToCartButton.name,
+    });
+    await expect(itemAddToCartButton).toBeVisible();
+    await expect(itemAddToCartButton).toBeEnabled();
+    await expect(itemAddToCartButton).toHaveText(CartButtonState.AddToCart);
+  }
 }
