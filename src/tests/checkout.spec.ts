@@ -89,4 +89,5 @@ test('should complete the purchase when clicking on finish and then go back home
   await checkoutOverviewPage.clickOnFinish();
   await checkoutCompletePage.verifyPurchaseSuccess();
   await checkoutCompletePage.goBackToProducts();
+  await inventoryPage.verifyHomePageLoaded();
 });
