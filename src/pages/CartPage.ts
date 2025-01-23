@@ -57,4 +57,8 @@ export class CartPage {
   async goBackToInventory() {
     await this.page.locator(CartLocators.continueShoppingButton).click();
   }
+
+  async clickOnCheckout() {
+    await this.page.locator(CartLocators.checkoutButton).click();
+  }
 }

@@ -5,7 +5,7 @@ export class CartLocators {
   static readonly checkoutButton = '[data-test="checkout"]';
   static readonly continueShoppingButton = '[data-test="continue-shopping"]';
   static readonly cartQuantity = '[data-test="cart-quantity-label"]';
-  static readonly inventoryItem = '[data-test="inventory-item"]';
+  static readonly inventoryItem = CommonLocators.inventoryItem;
   static readonly itemName = CommonLocators.itemName;
   static readonly itemDescription = CommonLocators.itemDescription;
   static readonly itemPrice = CommonLocators.itemPrice;

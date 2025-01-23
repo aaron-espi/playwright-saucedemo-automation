@@ -8,4 +8,6 @@ export class CommonLocators {
   static readonly itemName = '[data-test="inventory-item-name"]';
   static readonly itemPrice = '[data-test="inventory-item-price"]';
   static readonly itemDescription = '[data-test="inventory-item-desc"]';
+  static readonly errorMessage = '[data-test="error"]';
+  static readonly inventoryItem = '[data-test="inventory-item"]';
 }
