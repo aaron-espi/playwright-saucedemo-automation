@@ -3,7 +3,7 @@ import { InventoryPage } from '../pages/InventoryPage';
 import { LoginPage } from '../pages/LoginPage';
 import { SortOrder } from '../constants/enum/SortOrder';
 import { SortCriteria } from '../constants/enum/SortCriteria';
-import { config } from '../../playwright.config';
+import { credentials } from '../config/variables';
 
 let loginPage: LoginPage;
 let inventoryPage: InventoryPage;
@@ -12,7 +12,7 @@ test.beforeEach(async ({ page }) => {
   inventoryPage = new InventoryPage(page);
   loginPage = new LoginPage(page);
 
-  await loginPage.login(config.validUsername, config.validPassword);
+  await loginPage.login(credentials.validUsername, credentials.validPassword);
 });
 
 test('should sort products by price in descending order when "Price (High to Low)" is selected', async () => {

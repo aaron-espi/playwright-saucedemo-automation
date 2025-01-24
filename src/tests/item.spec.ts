@@ -2,7 +2,8 @@ import { test } from '@playwright/test';
 import { InventoryPage } from '../pages/InventoryPage';
 import { ItemPage } from '../pages/ItemPage';
 import { LoginPage } from '../pages/LoginPage';
-import { config } from '../../playwright.config';
+import { credentials } from '../config/variables';
+
 
 let loginPage: LoginPage;
 let inventoryPage: InventoryPage;
@@ -13,7 +14,7 @@ test.beforeEach(async ({ page }) => {
   inventoryPage = new InventoryPage(page);
   itemPage = new ItemPage(page);
 
-  await loginPage.login(config.validUsername, config.validPassword);
+  await loginPage.login(credentials.validUsername, credentials.validPassword);
   const product = await inventoryPage.getProduct(0);
   await inventoryPage.clickOnProduct(product);
 });

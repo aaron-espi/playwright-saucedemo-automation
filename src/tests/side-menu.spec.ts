@@ -3,7 +3,7 @@ import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
 import { AboutPage } from '../pages/AboutPage';
 import { SideMenuAction } from '../constants/enum/SideMenuAction';
-import { config } from '../../playwright.config';
+import { credentials } from '../config/variables';
 
 let loginPage: LoginPage;
 let inventoryPage: InventoryPage;
@@ -14,7 +14,7 @@ test.beforeEach(async ({ page }) => {
   inventoryPage = new InventoryPage(page);
   aboutPage = new AboutPage(page);
 
-  await loginPage.login(config.validUsername, config.validPassword);
+  await loginPage.login(credentials.validUsername, credentials.validPassword);
 });
 
 test('should reveal side menu when hamburger is clicked', async () => {
