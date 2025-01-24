@@ -60,9 +60,10 @@ The project requires a `.env` file at the root of the project to configure the s
 - **INVALID_USERNAME:** An incorrect username to test failed login.
 - **INVALID_PASSWORD:** An incorrect password to test failed login.
 - **LOCKED_USERNAME:** A locked username to test login failure due to account lock.
-- **BASE_URL:** The base URL of the application for running the tests.
-- **ABOUT_URL:** The URL of the "About" page of the application.
-
+- **BUYER_FIRST_NAME:** The first name of the buyer for the checkout process.
+- **BUYER_LAST_NAME:** The last name of the buyer for the checkout process.
+- **BUYER_ZIP_CODE:** The ZIP code of the buyer for the checkout process.
+  
 ---
 
 ### Running Tests
