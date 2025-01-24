@@ -1,4 +1,6 @@
-const ENV = process.env.NODE_ENV;
+import 'dotenv/config';
+
+const ENV = process.env.NODE_ENV!;
 
 const config = {
   dev: {
@@ -15,4 +17,4 @@ const config = {
   },
 };
 
-export default config[dev];
+export default config[ENV];

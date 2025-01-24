@@ -9,8 +9,7 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     env:
-      BASE_URL: https://www.saucedemo.com
-      ABOUT_URL: https://saucelabs.com/
+      NODE_ENV: prod
       BUYER_FIRST_NAME: ${{ secrets.BUYER_FIRST_NAME }}
       BUYER_LAST_NAME: ${{ secrets.BUYER_LAST_NAME }}
       BUYER_ZIP_CODE: ${{ secrets.BUYER_ZIP_CODE }}
