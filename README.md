@@ -88,3 +88,28 @@ npx playwright test tests/login.spec.ts
 ### Generate Test Report
 
 After the tests are executed, Playwright will automatically generate a report that you can review in the terminal or in the configured output files.
+
+---
+
+### Continuous Integration with GitHub Actions
+
+This project integrates GitHub Actions for continuous integration (CI), ensuring that automated tests are run on every push to the main branch and on every pull request.
+
+Whenever changes are pushed to main or a pull request is created, GitHub Actions automatically triggers the test workflow. This workflow ensures that the code is tested in a clean environment.
+
+#### Workflow Details
+- Triggered on:
+    - Pushes to the main branch.
+    - Pull requests targeting the main branch.
+- Actions Performed:
+    - Checkout the repository.
+    - Install the necessary dependencies.
+    - Install Playwright browsers.
+    - Run Playwright tests.
+    - Upload Playwright test results as artifacts for review.
+
+#### View Test Results
+
+After the tests are executed, GitHub Actions will automatically upload the results as artifacts. Results can be viewed in the GitHub Actions UI to quickly identify any failing tests and resolve issues.
+
+This ensures that all changes are tested before they are merged into main, helping to maintain a stable codebase.
