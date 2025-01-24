@@ -85,12 +85,6 @@ npx playwright test tests/login.spec.ts
 
 ---
 
-### Generate Test Report
-
-After the tests are executed, Playwright will automatically generate a report that you can review in the terminal or in the configured output files.
-
----
-
 ### Continuous Integration with GitHub Actions
 
 This project integrates GitHub Actions for continuous integration (CI), ensuring that automated tests are run on every push to the main branch and on every pull request.
