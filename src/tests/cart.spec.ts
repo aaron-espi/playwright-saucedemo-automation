@@ -4,7 +4,7 @@ import { InventoryPage } from '../pages/InventoryPage';
 import { ItemPage } from '../pages/ItemPage';
 import { CartPage } from '../pages/CartPage';
 import { CartButtonState } from '../constants/enum/CartButtonState';
-import { config } from '../../playwright.config';
+import { credentials } from '../config/variables';
 
 let loginPage: LoginPage;
 let inventoryPage: InventoryPage;
@@ -17,7 +17,7 @@ test.beforeEach(async ({ page }) => {
   cartPage = new CartPage(page);
   itemPage = new ItemPage(page);
 
-  await loginPage.login(config.validUsername, config.validPassword);
+  await loginPage.login(credentials.validUsername, credentials.validPassword);
 });
 
 test('should navigate to shopping cart page after clicking shopping cart button in header', async () => {

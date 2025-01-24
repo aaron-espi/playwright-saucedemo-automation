@@ -1,7 +1,7 @@
 import { Page, expect } from '@playwright/test';
 import { LoginLocators } from '../constants/locators/LoginLocators';
 import { StringConstants } from '../constants/StringConstants';
-import { config } from '../../playwright.config';
+import config from '../config/config';
 
 export class LoginPage {
   readonly page: Page;

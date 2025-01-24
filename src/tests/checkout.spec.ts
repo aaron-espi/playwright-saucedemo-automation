@@ -5,7 +5,7 @@ import { CartPage } from '../pages/CartPage';
 import { CheckoutInfoPage } from '../pages/CheckoutInfoPage';
 import { CheckoutOverviewPage } from '../pages/CheckoutOverviewPage';
 import { CheckoutCompletePage } from '../pages/CheckoutCompletePage';
-import { config } from '../../playwright.config';
+import { credentials, buyerDetails } from '../config/variables';
 
 let loginPage: LoginPage;
 let inventoryPage: InventoryPage;
@@ -22,7 +22,7 @@ test.beforeEach(async ({ page }) => {
   checkoutOverviewPage = new CheckoutOverviewPage(page);
   checkoutCompletePage = new CheckoutCompletePage(page);
 
-  await loginPage.login(config.validUsername, config.validPassword);
+  await loginPage.login(credentials.validUsername, credentials.validPassword);
 });
 
 test('should display input fields for name, surname, and zip code', async () => {
@@ -36,8 +36,8 @@ test('should not continue with empty name', async () => {
   await inventoryPage.addProductToCart(0);
   await inventoryPage.clickOnCart();
   await cartPage.clickOnCheckout();
-  await checkoutInfoPage.fillLastNameInput(config.buyerLastName);
-  await checkoutInfoPage.fillZipInput(config.buyerZip);
+  await checkoutInfoPage.fillLastNameInput(buyerDetails.lastName);
+  await checkoutInfoPage.fillZipInput(buyerDetails.zipCode);
   await checkoutInfoPage.clickOnContinue();
   await checkoutInfoPage.verifyCheckoutInfoPageLoaded();
   await checkoutInfoPage.verifyNameRequiredMessage();
@@ -47,8 +47,8 @@ test('should not continue with empty surname', async () => {
   await inventoryPage.addProductToCart(0);
   await inventoryPage.clickOnCart();
   await cartPage.clickOnCheckout();
-  await checkoutInfoPage.fillNameInput(config.buyerFirstName);
-  await checkoutInfoPage.fillZipInput(config.buyerZip);
+  await checkoutInfoPage.fillNameInput(buyerDetails.firstName);
+  await checkoutInfoPage.fillZipInput(buyerDetails.zipCode);
   await checkoutInfoPage.clickOnContinue();
   await checkoutInfoPage.verifyCheckoutInfoPageLoaded();
   await checkoutInfoPage.verifyLastnameRequiredMessage();
@@ -58,8 +58,8 @@ test('should not continue with empty zip', async () => {
   await inventoryPage.addProductToCart(0);
   await inventoryPage.clickOnCart();
   await cartPage.clickOnCheckout();
-  await checkoutInfoPage.fillNameInput(config.buyerFirstName);
-  await checkoutInfoPage.fillLastNameInput(config.buyerLastName);
+  await checkoutInfoPage.fillNameInput(buyerDetails.firstName);
+  await checkoutInfoPage.fillLastNameInput(buyerDetails.lastName);
   await checkoutInfoPage.clickOnContinue();
   await checkoutInfoPage.verifyZipRequiredMessage();
 });
@@ -77,7 +77,7 @@ test('should display correct data and price after clicking continue', async () =
   await inventoryPage.clickOnCart();
   const beforeDetails = await cartPage.getProductInCart();
   await cartPage.clickOnCheckout();
-  await checkoutInfoPage.fillCheckoutInfo(config.buyerFirstName, config.buyerLastName, config.buyerZip);
+  await checkoutInfoPage.fillCheckoutInfo(buyerDetails.firstName, buyerDetails.lastName, buyerDetails.zipCode);
   await checkoutOverviewPage.verifyProductDetailsAndPricesMatch(beforeDetails);
 });
 
@@ -85,7 +85,7 @@ test('should complete the purchase when clicking on finish and then go back home
   await inventoryPage.addProductToCart(0);
   await inventoryPage.clickOnCart();
   await cartPage.clickOnCheckout();
-  await checkoutInfoPage.fillCheckoutInfo(config.buyerFirstName, config.buyerLastName, config.buyerZip);
+  await checkoutInfoPage.fillCheckoutInfo(buyerDetails.firstName, buyerDetails.lastName, buyerDetails.zipCode);
   await checkoutOverviewPage.clickOnFinish();
   await checkoutCompletePage.verifyPurchaseSuccess();
   await checkoutCompletePage.goBackToProducts();
