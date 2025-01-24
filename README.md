@@ -92,10 +92,10 @@ This project integrates GitHub Actions for continuous integration (CI), ensuring
 Whenever changes are pushed to main or a pull request is created, GitHub Actions automatically triggers the test workflow. This workflow ensures that the code is tested in a clean environment.
 
 #### Workflow Details
-- Triggered on:
+- **Triggered on:**
     - Pushes to the main branch.
     - Pull requests targeting the main branch.
-- Actions Performed:
+- **Actions Performed:**
     - Checkout the repository.
     - Install the necessary dependencies.
     - Install Playwright browsers.
