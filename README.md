@@ -28,21 +28,23 @@ This project is structured as follows:
 ```bash
 playwright-saucedemo-automation/
 │
-├── src/                                 
+├── src/
 │   ├── tests/                          # Automated tests
 │   │
-│   ├── pages/                          # Page objects that encapsulate the UI elements and interactions.
+│   ├── pages/                          # Page objects that encapsulate the UI elements and interactions
 │   │
-│   └── constants/                       
+│   ├── config/                         # Configuration files, environment settings, and reusable test configurations
+│   │
+│   └── constants/
 │       ├── enum/                       # Enumerations
 │       ├── locators/                   # UI element locators
 │       └── StringConstants.ts          # Text constants and messages
 │
-├── playwright.config.ts                
-├── .gitignore                          
-├── package.json                        
-├── package-lock.json                   
-└── README.md                            
+├── playwright.config.ts
+├── .gitignore
+├── package.json
+├── package-lock.json
+└── README.md
 ```
 
 ---
@@ -63,7 +65,7 @@ The project requires a `.env` file at the root of the project to configure the s
 - **BUYER_FIRST_NAME:** The first name of the buyer for the checkout process.
 - **BUYER_LAST_NAME:** The last name of the buyer for the checkout process.
 - **BUYER_ZIP_CODE:** The ZIP code of the buyer for the checkout process.
-  
+
 ---
 
 ### Running Tests
@@ -93,15 +95,16 @@ This project integrates GitHub Actions for continuous integration (CI), ensuring
 Whenever changes are pushed to main or a pull request is created, GitHub Actions automatically triggers the test workflow. This workflow ensures that the code is tested in a clean environment.
 
 #### Workflow Details
+
 - **Triggered on:**
-    - Pushes to the main branch.
-    - Pull requests targeting the main branch.
+  - Pushes to the main branch.
+  - Pull requests targeting the main branch.
 - **Actions Performed:**
-    - Checkout the repository.
-    - Install the necessary dependencies.
-    - Install Playwright browsers.
-    - Run Playwright tests.
-    - Upload Playwright test results as artifacts for review.
+  - Checkout the repository.
+  - Install the necessary dependencies.
+  - Install Playwright browsers.
+  - Run Playwright tests.
+  - Upload Playwright test results as artifacts for review.
 
 #### View Test Results
 
