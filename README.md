@@ -56,38 +56,36 @@ playwright-saucedemo-automation/
 
 ## Getting Started
 
-Follow these instructions to set up the project locally and get started with automating web tests using Playwright.
-
 ### Prerequisites
 
 Before you begin, make sure you have the following tools installed on your machine:
 
-- npm
+- **npm**
   ```sh
   npm install npm@latest -g
   ```
-- Playwright
-  ```sh
-  npm install playwright
-  ```
-- dotenv
+- **dotenv**
   ```sh
   npm install dotenv
+  ```
+- **Playwright**
+  ```sh
+  npm install playwright
   ```
 
 ### Installation
 
 Follow these steps to install and set up the project locally:
 
-1. Clone the repository
+1. **Clone the repository**
    ```sh
-   git clone https://github.com/github_username/playwright-saucedemo-automation.git
+   git clone https://github.com/aaron-espi/playwright-saucedemo-automation.git
    ```
-2. Install dependencies
+2. **Install dependencies**
    ```sh
    npm install
    ```
-3. Set up environment variables
+3. **Set up environment variables**
    ```sh
    NODE_ENV               # The environment setting for the application ('dev', 'pre', 'prod').
    VALID_USERNAME         # The valid username for logging in.
@@ -104,8 +102,6 @@ Follow these steps to install and set up the project locally:
 
 ## Usage
 
-This project provides automated tests for web applications using Playwright. Below are some examples of how you can use this repository.
-
 ### Running Tests
 
 To run the tests locally, use the following command:
@@ -118,7 +114,7 @@ This will run all the tests in the project, simulating different user interactio
 
 ### Configuring for Different Environments
 
-You can easily modify the .env file to adjust the environment variables for different testing scenarios. For example, you can test different environments, test with different usernames, passwords, and other data related to the checkout process.
+You can easily customize the .env file to configure environment variables for various testing scenarios. For example, you can switch between different environments, test with various usernames, passwords, and modify other data related to the checkout process.
 
 <br/>
 
