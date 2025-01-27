@@ -36,7 +36,6 @@ This project is structured as follows:
 playwright-saucedemo-automation/
 ├── .github/
 │   └── workflows/                      # GitHub Actions workflows
-├── assets/                             # Static assets (images, logos, and other media files)
 ├── src/
 │   ├── tests/                          # Automated tests
 │   ├── pages/                          # Page objects that encapsulate the UI elements and interactions
