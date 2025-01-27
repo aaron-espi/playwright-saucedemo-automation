@@ -8,8 +8,8 @@ const config = {
     aboutUrl: 'https://dev.saucelabs.com/',
   },
   pre: {
-    baseUrl: 'https://staging.saucedemo.com',
-    aboutUrl: 'https://staging.saucelabs.com/',
+    baseUrl: 'https://pre.saucedemo.com',
+    aboutUrl: 'https://pre.saucelabs.com/',
   },
   prod: {
     baseUrl: 'https://www.saucedemo.com',

@@ -8,10 +8,10 @@ export class LoginPage {
 
   readonly baseUrl: string = config.baseUrl;
   readonly invalidCredentialsMessageText: string = StringConstants.INVALID_CREDENTIALS;
-  readonly userLockedMessageText: string = StringConstants.USER_LOCKED;
   readonly usernameRequiredMessageText: string = StringConstants.USERNAME_REQUIRED;
   readonly passwordRequiredMessageText: string = StringConstants.PASSWORD_REQUIRED;
-
+  readonly userLockedMessageText: string = StringConstants.USER_LOCKED;
+  
   constructor(page: Page) {
     this.page = page;
   }

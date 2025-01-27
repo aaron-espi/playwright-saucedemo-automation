@@ -10,7 +10,7 @@ export class AboutPage {
     this.page = page;
   }
 
-  async verifyAboutPageLoaded() {
+  async verifyAboutUsPageLoaded() {
     await expect(this.page.url()).toBe(this.aboutUrl);
   }
 }

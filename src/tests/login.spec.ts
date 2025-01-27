@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
-import { InventoryPage } from '../pages/InventoryPage';
 import { credentials } from '../config/variables';
+import { InventoryPage } from '../pages/InventoryPage';
 
 let loginPage: LoginPage;
 let inventoryPage: InventoryPage;

@@ -2,8 +2,8 @@ import { test } from '@playwright/test';
 import { InventoryPage } from '../pages/InventoryPage';
 import { LoginPage } from '../pages/LoginPage';
 import { SortOrder } from '../constants/enum/SortOrder';
-import { SortCriteria } from '../constants/enum/SortCriteria';
 import { credentials } from '../config/variables';
+import { SortCriteria } from '../constants/enum/SortCriteria';
 
 let loginPage: LoginPage;
 let inventoryPage: InventoryPage;
