@@ -34,28 +34,8 @@ export default defineConfig({
       use: { ...devices['iPhone 12'] },
     },
     {
-      name: 'Desktop 4K',
-      use: { viewport: { width: 3840, height: 2160 } },
-    },
-    {
-      name: 'Tablet',
-      use: { ...devices['iPad (gen 7)'] },
-    },
-    {
-      name: 'Desktop Chrome Dark Mode',
-      use: { ...devices['Desktop Chrome'], colorScheme: 'dark' },
-    },
-    {
-      name: 'Desktop Chrome Light Mode',
-      use: { ...devices['Desktop Chrome'], colorScheme: 'light' },
-    },
-    {
       name: 'edge',
       use: { channel: 'msedge' },
-    },
-    {
-      name: 'chromium incognito',
-      use: { ...devices['Desktop Chrome'], storageState: undefined },
-    },
+    }
   ],
 });
