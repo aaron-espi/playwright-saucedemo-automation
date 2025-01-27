@@ -1,7 +1,7 @@
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="assets/playwright-logo.svg" alt="Logo" width="125" height="125">
+  <a href="">
+    <img src="https://raw.githubusercontent.com/microsoft/playwright/main/packages/web/src/assets/playwright-logo.svg" alt="Logo" width="125" height="125">
   </a>
 
   <h3 align="center">Automated Web Testing with Playwright</h3>
