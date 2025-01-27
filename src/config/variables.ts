@@ -1,9 +1,9 @@
 export const credentials = {
-  lockedUsername: process.env.LOCKED_USERNAME!,
   validUsername: process.env.VALID_USERNAME!,
   validPassword: process.env.VALID_PASSWORD!,
   invalidUsername: process.env.INVALID_USERNAME!,
   invalidPassword: process.env.INVALID_PASSWORD!,
+  lockedUsername: process.env.LOCKED_USERNAME!,
 };
 
 export const buyerDetails = {

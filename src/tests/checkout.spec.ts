@@ -4,8 +4,8 @@ import { InventoryPage } from '../pages/InventoryPage';
 import { CartPage } from '../pages/CartPage';
 import { CheckoutInfoPage } from '../pages/CheckoutInfoPage';
 import { CheckoutOverviewPage } from '../pages/CheckoutOverviewPage';
-import { credentials, buyerDetails } from '../config/variables';
 import { CheckoutCompletePage } from '../pages/CheckoutCompletePage';
+import { credentials, buyerDetails } from '../config/variables';
 
 let loginPage: LoginPage;
 let inventoryPage: InventoryPage;

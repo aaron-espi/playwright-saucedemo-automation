@@ -2,8 +2,8 @@ import { test } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
 import { AboutPage } from '../pages/AboutPage';
-import { credentials } from '../config/variables';
 import { SideMenuAction } from '../constants/enum/SideMenuAction';
+import { credentials } from '../config/variables';
 
 let loginPage: LoginPage;
 let inventoryPage: InventoryPage;
@@ -46,8 +46,8 @@ test('should navigate to login page after clicking logout button in side menu', 
   await loginPage.verifyLoginPageLoaded();
 });
 
-test('should navigate to about us page after clicking about button in side menu', async () => {
+test('should navigate to about page after clicking about button in side menu', async () => {
   await inventoryPage.toggleSideMenu(SideMenuAction.Open);
   await inventoryPage.clickOnAbout();
-  await aboutPage.verifyAboutUsPageLoaded();
+  await aboutPage.verifyAboutPageLoaded();
 });

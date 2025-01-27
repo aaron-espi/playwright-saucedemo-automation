@@ -3,8 +3,8 @@ import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
 import { ItemPage } from '../pages/ItemPage';
 import { CartPage } from '../pages/CartPage';
-import { credentials } from '../config/variables';
 import { CartButtonState } from '../constants/enum/CartButtonState';
+import { credentials } from '../config/variables';
 
 let loginPage: LoginPage;
 let inventoryPage: InventoryPage;
