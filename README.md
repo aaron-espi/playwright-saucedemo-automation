@@ -61,14 +61,17 @@ playwright-saucedemo-automation/
 Before you begin, make sure you have the following tools installed on your machine:
 
 - **npm**
+  
   ```sh
   npm install npm@latest -g
   ```
 - **dotenv**
+  
   ```sh
   npm install dotenv
   ```
 - **Playwright**
+  
   ```sh
   npm install playwright
   ```
@@ -78,25 +81,26 @@ Before you begin, make sure you have the following tools installed on your machi
 Follow these steps to install and set up the project locally:
 
 1. **Clone the repository**
+   
    ```sh
    git clone https://github.com/aaron-espi/playwright-saucedemo-automation.git
    ```
 2. **Install dependencies**
+   
    ```sh
    npm install
    ```
-3. **Set up environment variables**
-   ```sh
-   NODE_ENV               # The environment setting for the application ('dev', 'pre', 'prod').
-   VALID_USERNAME         # The valid username for logging in.
-   VALID_PASSWORD         # The corresponding password for the valid user.
-   INVALID_USERNAME       # An incorrect username to test failed login.
-   INVALID_PASSWORD       # An incorrect password to test failed login.
-   LOCKED_USERNAME        # A locked username to test login failure due to account lock.
-   BUYER_FIRST_NAME       # The first name of the buyer for the checkout process.
-   BUYER_LAST_NAME        # The last name of the buyer for the checkout process.
-   BUYER_ZIP_CODE         # The ZIP code of the buyer for the checkout process.
-   ```
+3. **Set up environment variables:**
+   
+   - **`NODE_ENV`**: The environment setting for the application ('dev', 'pre', 'prod').
+   - **`VALID_USERNAME`**: The valid username for logging in.
+   - **`VALID_PASSWORD`**: The corresponding password for the valid user.
+   - **`INVALID_USERNAME`**: An incorrect username to test failed login.
+   - **`INVALID_PASSWORD`**: An incorrect password to test failed login.
+   - **`LOCKED_USERNAME`**: A locked username to test login failure due to account lock.
+   - **`BUYER_FIRST_NAME`**: The first name of the buyer for the checkout process.
+   - **`BUYER_LAST_NAME`**: The last name of the buyer for the checkout process.
+   - **`BUYER_ZIP_CODE`**: The ZIP code of the buyer for the checkout process.
 
 <br/>
 
