@@ -20,11 +20,12 @@ This repository demonstrates my QA and test automation skills using Playwright. 
 
 ### Built With
 
-- [![Playwright](https://img.shields.io/badge/Playwright-333333?style=for-the-badge&logo=playwright&logoColor=white)](https://playwright.dev/)
-- [![TypeScript][TypeScript.com]][TypeScript-url]
-- [![GitHub Actions][GitHubActions.com]][GitHubActions-url]
-- [![NPM][NPM.com]][NPM-url]
-- [![Dotenv][Dotenv.com]][Dotenv-url]
+- [![Playwright](https://img.shields.io/badge/-playwright-%232EAD33?style=for-the-badge&logo=playwright&logoColor=white)](https://playwright.dev/)
+- [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+- [![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/features/actions)
+- [![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/)
+- [![Dotenv](https://img.shields.io/badge/Dotenv-1A2C4C?style=for-the-badge&logo=dotenv&logoColor=white)](https://www.npmjs.com/package/dotenv)
+
 
 <br/>
 
@@ -138,13 +139,3 @@ Whenever changes are pushed to main or a pull request is created, GitHub Actions
   - Install Playwright browsers.
   - Run Playwright tests.
   - Upload Playwright test results as artifacts for review.
-
-[Playwright-url]: https://playwright.dev/
-[TypeScript.com]: https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white
-[TypeScript-url]: https://www.typescriptlang.org/
-[GitHubActions.com]: https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white
-[GitHubActions-url]: https://github.com/features/actions
-[Dotenv.com]: https://img.shields.io/badge/Dotenv-1A2C4C?style=for-the-badge&logo=dotenv&logoColor=white
-[Dotenv-url]: https://www.npmjs.com/package/dotenv
-[NPM.com]: https://img.shields.io/badge/NPM-CB3837?style=for-the-badge&logo=npm&logoColor=white
-[NPM-url]: https://www.npmjs.com/
